@@ -11,13 +11,11 @@ public class Parking extends WynajmMieszkanie{
     int poleParking = 10; // w metrach kwadratnych
     int wolneMiejsceParking;
     int zajenteMiejsce;
-    List<Parking> parkingList;
     List<Transport> transportList;
     List<Objekt> przedmiotList;
 
     public Parking( double objetosc) {
         super(objetosc);
-        this.parkingList = new ArrayList<>();
         this.transportList = new ArrayList<>();
         this.przedmiotList = new ArrayList<>();
     }

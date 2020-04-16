@@ -98,7 +98,6 @@ public class Main {
         przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
         przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
         przedmiotList.add(new Przedmiot("Spret",2.25, 5.6, 5.0));
-        //kkkkk
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
