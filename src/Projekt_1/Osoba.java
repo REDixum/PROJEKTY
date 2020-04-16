@@ -1,7 +1,7 @@
 package Projekt_1;
 
-import Projekt_1.Transport.Objekt;
-import Projekt_1.Transport.Transport;
+import Projekt_1.Objekty.Objekt;
+import Projekt_1.Objekty.Transport;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

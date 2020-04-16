@@ -1,11 +1,9 @@
-package Projekt_1;
-
-import Projekt_1.Transport.Objekt;
+package Projekt_1.Objekty;
 
 public class Przedmiot extends Objekt {
-    public String nazwa;
+    String nazwa;
     public Przedmiot(String nazwa, double szerokosc, double dlugosc, double wysokosc) {
         super(szerokosc, dlugosc, wysokosc);
-        this.nazwa = nazwa;
+        this.nazwa=nazwa;
     }
 }

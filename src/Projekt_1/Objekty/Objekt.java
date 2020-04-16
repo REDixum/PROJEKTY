@@ -1,4 +1,4 @@
-package Projekt_1.Transport;
+package Projekt_1.Objekty;
 
 public class Objekt {
     public double objetosc;

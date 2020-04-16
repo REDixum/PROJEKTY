@@ -1,6 +1,4 @@
-package Projekt_1.Transport;
-
-import Projekt_1.Transport.Transport;
+package Projekt_1.Objekty;
 
 public class SamochodTerenowy extends Transport {
     public int srednicaKola;
