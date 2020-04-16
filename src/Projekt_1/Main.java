@@ -176,13 +176,13 @@ public class Main {
                 }
             }
             if (proverka == -1) {
-                throw new WrongNumberPeselException("Exception: Takiego czlowieka nie ma w bazie danych!");
+                throw new ArrayIndexOutOfBoundsException();
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wprowadzeniePesel(osobaList);
-        } catch (WrongNumberPeselException a){
-            a.getMessage();
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
         }
         return osobaList.get(proverka);
     }
