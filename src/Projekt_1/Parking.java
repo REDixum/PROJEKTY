@@ -2,8 +2,6 @@ package Projekt_1;
 
 import Projekt_1.Objekty.Objekt;
 import Projekt_1.Objekty.Transport;
-import Projekt_1.Objekty.Objekt;
-import Projekt_1.Objekty.Transport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class Parking extends WynajmMieszkanie{
     int wolneMiejsceParking;
     int zajenteMiejsce;
     List<Transport> transportList;
-    List<Objekt>przedmiotList;
+    List<Objekt> przedmiotList;
 
     public Parking( double objetosc) {
         super(objetosc);

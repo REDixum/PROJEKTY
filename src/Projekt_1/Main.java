@@ -164,15 +164,12 @@ public class Main {
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
-        } catch (AppartmentRentedException e) {
-            e.printStackTrace();
-        } catch (AbsenceAppartmentException e) {
+        } catch (AppartmentRentedException | AbsenceAppartmentException e) {
             e.printStackTrace();
         }
     }
 
-
-    public static Osoba wprowadzeniePesel(List<Osoba> osobaList) throws ArrayIndexOutOfBoundsException {
+    public static Osoba wprowadzeniePesel(List<Osoba> osobaList) {
         int id = -1;
         try {
             System.out.println("Wprowadz PESEL:");
@@ -194,7 +191,7 @@ public class Main {
             System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
             wprowadzeniePesel(osobaList);
         }
-        return id >= 0 ? osobaList.get(id) : null;
+        return id >= 0 ? osobaList.get(id) : wprowadzeniePesel(osobaList);
     }
 
     public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList){
@@ -237,10 +234,10 @@ public class Main {
                     numerMieszkanie = i;
                 }
             }
-            if (numerMieszkanie == -1) {
+            if (sprawdzenieMieszkania == false) {
                 throw new AbsenceAppartmentException("Exception: Nie ma takiego mieszkania!");
             }
-            if (sprawdzenieMieszkania == true && mieszkanieList.get(numerMieszkanie).najemca != null && numerMieszkanie != -1) {
+            if (sprawdzenieMieszkania == true && mieszkanieList.get(numerMieszkanie).najemca != null) {
                 throw new AppartmentRentedException("Mieszkanie juz jest wynajmowane");
             }
             if (sprawdzanieNajemcy == true && sprawdzenieMieszkania == true) {
@@ -251,7 +248,7 @@ public class Main {
                 System.out.println("Pan/Pani wynajmowal(a) mieszkanie na 1 miesiac");
             }
         } catch (AbsenceAppartmentException | AppartmentRentedException e) {
-            e.getMessage();
+            System.out.println(e);
             case5(mieszkanieList, account);
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
