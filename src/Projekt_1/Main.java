@@ -24,7 +24,6 @@ public class Main {
             osobaList.add(new Osoba("Artem", "Klimowicz", 7007, "ul.Woronicza", LocalDate.parse("1889-04-30"), false));
             osobaList.add(new Osoba("Lesha", "Kosteniewicz", 1111, "ul.Moloszenko", LocalDate.parse("2000-01-30"), false));
             osobaList.add(new Osoba("Patryk", "Orlowski", 2400, "ul.Koszykowa", LocalDate.parse("1992-05-12"), false));
-
         List<Osoba> osobaListBlock1 = new ArrayList<>();
             osobaListBlock1.add(osobaList.get(1));
             osobaListBlock1.add(osobaList.get(2));
@@ -85,7 +84,7 @@ public class Main {
             transportList.add(new Lodz("Honda", 90, "Motorowy", "Hydraliczny", "Bialy", 6, "WAW123RK", 2, 7.7, 10.67, 5.6));
             transportList.add(new Motocykl("Hyundai", 222, "Cruiser", "Electryczny", "Granatowy", 1, "SPI456TM", 220, 1.11, 3.43, 1.12));
             transportList.add(new SamochodMiejski("Mazda", 190, "Miejski", "Elektryczny", "Bialy", 4, "ERA75TM", "Letni", 1.76, 2.3, 2.3));
-
+            //test
         // ---------------- Przedmioty -----------------------
         List<Objekt> przedmiotList = new ArrayList<>();
         przedmiotList.add(new Przedmiot("Sprzet sportowy",3.4, 5.6, 5.0));
