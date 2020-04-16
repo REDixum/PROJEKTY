@@ -120,11 +120,11 @@ public class Main {
                         System.exit(0);
                         break;
                     case 2:
-                        wprowadzeniePesel(osobaList);
+                        wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
                         break;
                     case 3:
-                        Osoba account3 = wprowadzeniePesel(osobaList);
+                        Osoba account3 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         System.out.println(account3);
                         case3(account3);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
@@ -136,19 +136,19 @@ public class Main {
                     case 5:
                         System.out.println("Wolne mieszkania: ");
                         case4(mieszkanieList);
-                        Osoba account5 = wprowadzeniePesel(osobaList);
+                        Osoba account5 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         System.out.println(account5);
                         case5(mieszkanieList, account5);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
                         break;
                     case 6:
-                        Osoba account6 = wprowadzeniePesel(osobaList);
+                        Osoba account6 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         System.out.println(account6);
                         case6(account6);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         break;
                     case 7:
-                        Osoba account7 = wprowadzeniePesel(osobaList);
+                        Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         System.out.println(account7);
                         case7(account7);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
@@ -162,36 +162,36 @@ public class Main {
                 throw new InputMismatchException();
             }
         } catch (InputMismatchException e) {
-            System.out.println("Exception: Bledne dane  \n");
+            System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
         } catch (AppartmentRentedException | AbsenceAppartmentException e) {
             e.printStackTrace();
         }
     }
 
-    public static Osoba wprowadzeniePesel(List<Osoba> osobaList) {
-        int id = -1;
+    public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList){
+        int numer = -1;
         try {
             System.out.println("Wprowadz PESEL:");
             Scanner sc = new Scanner(System.in);
             int wprPesel = sc.nextInt();
             for (int i = 0; i < osobaList.size(); i++) {
                 if (osobaList.get(i).pesel == wprPesel) {
-                    id = i;
+                    numer = i;
                     System.out.println("Pan/Pani na stronie danych: " + osobaList.get(i).imie + " " + osobaList.get(i).nazwisko);
                 }
             }
-            if (id == -1) {
-                throw new ArrayIndexOutOfBoundsException();
+            if (numer == -1) {
+                throw new IndexOutOfBoundsException();
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
-            wprowadzeniePesel(osobaList);
-        } catch (ArrayIndexOutOfBoundsException e){
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);;
+        } catch (IndexOutOfBoundsException e){
             System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
-            wprowadzeniePesel(osobaList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
         }
-        return id >= 0 ? osobaList.get(id) : wprowadzeniePesel(osobaList);
+        return osobaList.get(numer);
     }
 
     public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList){
