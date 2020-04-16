@@ -11,7 +11,7 @@ public class Parking extends WynajmMieszkanie{
     int poleParking = 10; // w metrach kwadratnych
     int wolneMiejsceParking;
     int zajenteMiejsce;
-     List<Parking> parkingList;
+    List<Parking> parkingList;
     List<Transport> transportList;
     List<Objekt> przedmiotList;
 

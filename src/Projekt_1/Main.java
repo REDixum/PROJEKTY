@@ -1,5 +1,7 @@
 package Projekt_1;
 
+import Projekt_1.Exceptions.AbsenceAppartmentException;
+import Projekt_1.Exceptions.AppartmentRentedException;
 import Projekt_1.Exceptions.WrongNumberPeselException;
 import Projekt_1.Transport.*;
 
@@ -156,26 +158,30 @@ public class Main {
             } else {
                 throw new InputMismatchException();
             }
-        } catch (InputMismatchException | WrongNumberPeselException e) {
+        } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList);
+        } catch (AppartmentRentedException e) {
+            e.printStackTrace();
+        } catch (AbsenceAppartmentException e) {
+            e.printStackTrace();
         }
     }
 
 
-    public static Osoba wprowadzeniePesel(List<Osoba> osobaList) throws WrongNumberPeselException {   // Изменил название метода || Не читабельно было
-        int proverka = -1;
-        System.out.println("Wprowadz PESEL:");
+    public static Osoba wprowadzeniePesel(List<Osoba> osobaList) throws ArrayIndexOutOfBoundsException {
+        int id = -1;
         try {
+            System.out.println("Wprowadz PESEL:");
             Scanner sc = new Scanner(System.in);
             int wprPesel = sc.nextInt();
             for (int i = 0; i < osobaList.size(); i++) {
                 if (osobaList.get(i).pesel == wprPesel) {
+                    id = i;
                     System.out.println("Pan/Pani na stronie danych: " + osobaList.get(i).imie + " " + osobaList.get(i).nazwisko);
-                    proverka = i;
                 }
             }
-            if (proverka == -1) {
+            if (id == -1) {
                 throw new ArrayIndexOutOfBoundsException();
             }
         } catch (InputMismatchException e) {
@@ -183,8 +189,9 @@ public class Main {
             wprowadzeniePesel(osobaList);
         } catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
+            wprowadzeniePesel(osobaList);
         }
-        return osobaList.get(proverka);
+        return id >= 0 ? osobaList.get(id) : null;
     }
 
     public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList){   // Создал метод для выхода || Удобство
@@ -212,30 +219,38 @@ public class Main {
         }
     }
 
-    public static void case5(List<Mieszkanie> mieszkanieList, Osoba account) {
-        boolean sprawdzenieMieszkania = false;
-        boolean sprawdzanieNajemcy = false;
-        System.out.println("Numer indyfikacyjny meszkania: ");
-        Scanner sc = new Scanner(System.in);
-        int numerIndyfikacyjny = sc.nextInt();
-        for (int i = 0; i < mieszkanieList.size(); i++) {
-            if ((numerIndyfikacyjny == mieszkanieList.get(i).numerIndyfikacyjny) && (mieszkanieList.get(i).najemca == null)) {
-                mieszkanieList.get(i).najemca = account;
+    public static void case5(List<Mieszkanie> mieszkanieList, Osoba account) throws AbsenceAppartmentException, AppartmentRentedException {
+        try {
+            boolean sprawdzenieMieszkania = false;
+            boolean sprawdzanieNajemcy = false;
+            int numerMieszkanie = -1;
+            System.out.println("Numer indyfikacyjny meszkania: ");
+            Scanner sc = new Scanner(System.in);
+            int numerIndyfikacyjny = sc.nextInt();
+            for (int i = 0; i < mieszkanieList.size(); i++) {
+                if ((numerIndyfikacyjny == mieszkanieList.get(i).numerIndyfikacyjny) && (mieszkanieList.get(i).najemca == null)) {
+                    sprawdzenieMieszkania = true;
+                    sprawdzanieNajemcy = true;
+                    numerMieszkanie = i;
+                }
+            }
+            if (numerMieszkanie == -1) {
+                throw new AbsenceAppartmentException("Exception: Nie ma takiego mieszkania!");
+            }
+            if (sprawdzenieMieszkania == true && mieszkanieList.get(numerMieszkanie).najemca != null && numerMieszkanie != -1) {
+                throw new AppartmentRentedException("Mieszkanie juz jest wynajmowane");
+            }
+            if (sprawdzanieNajemcy == true && sprawdzenieMieszkania == true) {
+                mieszkanieList.get(numerMieszkanie).najemca = account;
                 account.najemca = true;
-                account.mieszkanieList.add(mieszkanieList.get(i));
-                mieszkanieList.get(i).listOsobMieszkanie.add(account);
+                account.mieszkanieList.add(mieszkanieList.get(numerMieszkanie));
+                mieszkanieList.get(numerMieszkanie).listOsobMieszkanie.add(account);
                 System.out.println("Pan/Pani wynajmowal(a) mieszkanie na 1 miesiac");
-                sprawdzenieMieszkania = true;
             }
-            if (mieszkanieList.get(i).najemca != null){
-                sprawdzanieNajemcy = true;
-            }
-          }
-        if (sprawdzenieMieszkania == false) {
-            System.out.println("Nie ma takiego mieszkania");
-        }
-        if (sprawdzanieNajemcy == false){
-            System.out.println("Mieszkanie juz jest wynajmowane");
+        } catch (AbsenceAppartmentException | AppartmentRentedException e) {
+            e.getMessage();
+        } catch (InputMismatchException e) {
+            System.out.println("Exception: Bledne dane!");
         }
     }
 
