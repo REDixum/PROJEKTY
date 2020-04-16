@@ -13,7 +13,7 @@ public class Main {
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
             osobaList.add(new Osoba("Filip", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
-            osobaList.add(new Osoba("Max", "Semczenko", 7823, "ul.Ukrainki", LocalDate.parse("1879-05-18"), true));  // najemca
+            osobaList.add(new Osoba("Maks", "Semczenko", 7823, "ul.Ukrainki", LocalDate.parse("1879-05-18"), true));  // najemca
             osobaList.add(new Osoba("Varya", "Baranczykawa", 3564, "ul.Timoshenko", LocalDate.parse("2000-03-20"), false));
             osobaList.add(new Osoba("Lesha", "Vasczilo", 2300, "ul.Pobiedzitieliej", LocalDate.parse("2002-09-06"), false));
             osobaList.add(new Osoba("Nikita", "Demczenko", 5983, "ul.Golobiewa", LocalDate.parse("2002-03-09"), true));  // najemca
@@ -90,12 +90,9 @@ public class Main {
 //
 //
 //        );
-
-
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
-
             // --------------------------------------------------
 
 
