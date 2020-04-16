@@ -249,8 +249,10 @@ public class Main {
             }
         } catch (AbsenceAppartmentException | AppartmentRentedException e) {
             e.getMessage();
+            case5(mieszkanieList, account);
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
+            case5(mieszkanieList, account);
         }
     }
 
