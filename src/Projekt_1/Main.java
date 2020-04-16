@@ -17,7 +17,7 @@ public class Main {
             osobaList.add(new Osoba("Varya", "Baranczykawa", 3564, "ul.Timoshenko", LocalDate.parse("2000-03-20"), false));
             osobaList.add(new Osoba("Lesha", "Vasczilo", 2300, "ul.Pobiedzitieliej", LocalDate.parse("2002-09-06"), false));
             osobaList.add(new Osoba("Nikita", "Demczenko", 5983, "ul.Golobiewa", LocalDate.parse("2002-03-09"), true));  // najemca
-            osobaList.add(new Osoba("Matwiej", "Noskow", 3480, "ul.Tankistow", LocalDate.parse("1967-12-10"), false));
+            osobaList.add(new Osoba("Maciej", "Noskow", 3480, "ul.Tankistow", LocalDate.parse("1967-12-10"), false));
             osobaList.add(new Osoba("Wadim", "Pupkin", 9754, "ul.Lorzkina", LocalDate.parse("2007-11-06"), true));  // najemca
             osobaList.add(new Osoba("Artem", "Klimowicz", 7007, "ul.Woronicza", LocalDate.parse("1889-04-30"), false));
             osobaList.add(new Osoba("Lesha", "Kosteniewicz", 1111, "ul.Moloszenko", LocalDate.parse("2000-01-30"), false));
