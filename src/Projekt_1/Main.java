@@ -237,7 +237,7 @@ public class Main {
             if (sprawdzenieMieszkania == false) {
                 throw new AbsenceAppartmentException("Exception: Nie ma takiego mieszkania!");
             }
-            if (sprawdzenieMieszkania == true && mieszkanieList.get(numerMieszkanie).najemca != null) {
+            if (sprawdzenieMieszkania == true && mieszkanieList.get(numerMieszkanie).najemca == null) {
                 throw new AppartmentRentedException("Mieszkanie juz jest wynajmowane");
             }
             if (sprawdzanieNajemcy == true && sprawdzenieMieszkania == true) {
