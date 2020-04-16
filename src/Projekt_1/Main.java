@@ -162,7 +162,7 @@ public class Main {
                 throw new InputMismatchException();
             }
         } catch (InputMismatchException e) {
-            System.out.println("Exception: Bledne dane \n");
+            System.out.println("Exception: Bledne dane  \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
         } catch (AppartmentRentedException | AbsenceAppartmentException e) {
             e.printStackTrace();
