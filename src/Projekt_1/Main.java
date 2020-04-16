@@ -101,11 +101,11 @@ public class Main {
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
         //--- --------------------------------------------------
-        meniu(osobaList, mieszkanieList, blokList, osiedlaList);
+        meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
     }
 
     // ------------------ MENU -----------------------------
-    public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList) {
+    public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList) {
         System.out.println("Meniu:");
         System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n");
         System.out.println("Wprowadz numer punktu meniu:");
@@ -121,17 +121,17 @@ public class Main {
                         break;
                     case 2:
                         wprowadzeniePesel(osobaList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
                         break;
                     case 3:
                         Osoba account3 = wprowadzeniePesel(osobaList);
                         System.out.println(account3);
                         case3(account3);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         break;
                     case 4:
                         case4(mieszkanieList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
                         break;
                     case 5:
                         System.out.println("Wolne mieszkania: ");
@@ -139,19 +139,19 @@ public class Main {
                         Osoba account5 = wprowadzeniePesel(osobaList);
                         System.out.println(account5);
                         case5(mieszkanieList, account5);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
                         break;
                     case 6:
                         Osoba account6 = wprowadzeniePesel(osobaList);
                         System.out.println(account6);
                         case6(account6);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         break;
                     case 7:
                         Osoba account7 = wprowadzeniePesel(osobaList);
                         System.out.println(account7);
                         case7(account7);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                     case 8:
 
                         break;
@@ -163,7 +163,7 @@ public class Main {
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
         } catch (AppartmentRentedException e) {
             e.printStackTrace();
         } catch (AbsenceAppartmentException e) {
@@ -197,12 +197,12 @@ public class Main {
         return id >= 0 ? osobaList.get(id) : null;
     }
 
-    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList){   // Создал метод для выхода || Удобство
+    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList){
         System.out.println("Wprowadz 0 jesli chcesz wrocic na poprzednia strone, lub dowolna liczbe zeby skonczyc program:");
         Scanner sc = new Scanner(System.in);
         int numer = sc.nextInt();
         if (numer == 0) {
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
         } else {
             System.out.println("Program jest zakonczony.");
         }
