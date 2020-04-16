@@ -3,7 +3,7 @@ package Projekt_1;
 import Projekt_1.Exceptions.AbsenceAppartmentException;
 import Projekt_1.Exceptions.AppartmentRentedException;
 import Projekt_1.Exceptions.WrongNumberPeselException;
-import Projekt_1.Transport.*;
+import Projekt_1.Objekty.*;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -87,17 +87,22 @@ public class Main {
             transportList.add(new SamochodMiejski("Mazda", 190, "Miejski", "Elektryczny", "Bialy", 4, "ERA75TM", "Letni", 1.76, 2.3, 2.3));
 
         // ---------------- Przedmioty -----------------------
-//        List<Objekt> przedmiotList = Arrays.asList(
-//                new Objekt("Butylke wody 1L")
-//
-//
-//        );
+        List<Objekt> przedmiotList = new ArrayList<>();
+        przedmiotList.add(new Przedmiot("Sprzet sportowy",3.4, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Hulejnoga",0.23, 2.6, 1.0));
+        przedmiotList.add(new Przedmiot("Rower",0.23, 2.6, 1.0));
+        przedmiotList.add(new Przedmiot("Opony",0.4, 1.4, 1.4));
+        przedmiotList.add(new Przedmiot("Alkahol",3.1, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Rowery",2.9, 5.6, 1.0));
+        przedmiotList.add(new Przedmiot("Strare fortepian",4.89, 5.6, 1.0));
+        przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Spret",2.25, 5.6, 5.0));
+        //kkkkk
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
-            // --------------------------------------------------
-
-
+        //--- --------------------------------------------------
         meniu(osobaList, mieszkanieList, blokList, osiedlaList);
     }
 
