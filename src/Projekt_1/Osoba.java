@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Osoba implements  Comparable<Osoba>{
-    private static int indeks =0;
+public class Osoba implements Comparable<Osoba> {
+    private static int indeks = 0;
     public int id = 1;
     public String imie;
     public String nazwisko;
@@ -21,18 +21,18 @@ public class Osoba implements  Comparable<Osoba>{
     public List<Transport> transportOsobaList;
     public List<Objekt> przedmiotOsobaList;
 
-    public Osoba(String imie, String nazwisko, int pesel, String adres, LocalDate dataUrodzenia, boolean najemca){
-        this.adres=adres;
-        this.nazwisko=nazwisko;
-        this.imie=imie;
-        this.pesel=pesel;
-        this.dataUrodzenia=dataUrodzenia;
+    public Osoba(String imie, String nazwisko, int pesel, String adres, LocalDate dataUrodzenia, boolean najemca) {
+        this.adres = adres;
+        this.nazwisko = nazwisko;
+        this.imie = imie;
+        this.pesel = pesel;
+        this.dataUrodzenia = dataUrodzenia;
         this.mieszkanieList = new ArrayList<>();
         this.parkingOsobaList = new ArrayList<>();
         this.transportOsobaList = new ArrayList<>();
         this.przedmiotOsobaList = new ArrayList<>();
-        this.id= ++indeks;
-        if(najemca == true){
+        this.id = ++indeks;
+        if (najemca == true) {
             this.najemca = true;
         }
     }
@@ -43,15 +43,15 @@ public class Osoba implements  Comparable<Osoba>{
         return dataUrodzenia.compareTo(o.dataUrodzenia);
     }
 
-    public String toString(){
-        return "\n Imie: " + imie + "\n"+
-                "Nazwisko: "+ nazwisko + "\n"+
-                "Data urodzenia: " + dataUrodzenia + "\n"+
-                "Pesel: " + pesel + "\n"+
+    public String toString() {
+        return "Imie: " + imie + "\n" +
+                "Nazwisko: " + nazwisko + "\n" +
+                "Data urodzenia: " + dataUrodzenia + "\n" +
+                "Pesel: " + pesel + "\n" +
                 "Adres: " + adres + "\n" +
-                "ID: " + id +"\n"+
-                "Ilosc wynajetych mieszkan: " + mieszkanieList.size() + "\n"+
-                "Ilosc wynajetych parkingow: "+ parkingOsobaList.size() + "\n";
+                "ID: " + id + "\n" +
+                "Ilosc wynajetych mieszkan: " + mieszkanieList.size() + "\n" +
+                "Ilosc wynajetych parkingow: " + parkingOsobaList.size() + "\n";
     }
 
 

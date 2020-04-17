@@ -11,33 +11,33 @@ public class Main {
     public static void main(String[] args) {
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
-            osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
-            osobaList.add(new Osoba("Maks", "Semczenko", 7823, "ul.Ukrainki", LocalDate.parse("1879-05-18"), true));  // najemca
-            osobaList.add(new Osoba("Varya", "Baranczykawa", 3564, "ul.Timoshenko", LocalDate.parse("2000-03-20"), false));
-            osobaList.add(new Osoba("Lesha", "Vasczilo", 2300, "ul.Pobiedzitieliej", LocalDate.parse("2002-09-06"), false));
-            osobaList.add(new Osoba("Nikita", "Demczenko", 5983, "ul.Golobiewa", LocalDate.parse("2002-03-09"), true));  // najemca
-            osobaList.add(new Osoba("Maciej", "Noskow", 3480, "ul.Tankistow", LocalDate.parse("1967-12-10"), false));
-            osobaList.add(new Osoba("Wadim", "Pupkin", 9754, "ul.Lorzkina", LocalDate.parse("2007-11-06"), true));  // najemca
-            osobaList.add(new Osoba("Artem", "Klimowicz", 7007, "ul.Woronicza", LocalDate.parse("1889-04-30"), false));
-            osobaList.add(new Osoba("Lesha", "Kosteniewicz", 1111, "ul.Moloszenko", LocalDate.parse("2000-01-30"), false));
-            osobaList.add(new Osoba("Patryk", "Orlowski", 2400, "ul.Koszykowa", LocalDate.parse("1992-05-12"), false));
+        osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
+        osobaList.add(new Osoba("Maks", "Semczenko", 7823, "ul.Ukrainki", LocalDate.parse("1879-05-18"), true));  // najemca
+        osobaList.add(new Osoba("Varya", "Baranczykawa", 3564, "ul.Timoshenko", LocalDate.parse("2000-03-20"), false));
+        osobaList.add(new Osoba("Lesha", "Vasczilo", 2300, "ul.Pobiedzitieliej", LocalDate.parse("2002-09-06"), false));
+        osobaList.add(new Osoba("Nikita", "Demczenko", 5983, "ul.Golobiewa", LocalDate.parse("2002-03-09"), true));  // najemca
+        osobaList.add(new Osoba("Maciej", "Noskow", 3480, "ul.Tankistow", LocalDate.parse("1967-12-10"), false));
+        osobaList.add(new Osoba("Wadim", "Pupkin", 9754, "ul.Lorzkina", LocalDate.parse("2007-11-06"), true));  // najemca
+        osobaList.add(new Osoba("Artem", "Klimowicz", 7007, "ul.Woronicza", LocalDate.parse("1889-04-30"), false));
+        osobaList.add(new Osoba("Lesha", "Kosteniewicz", 1111, "ul.Moloszenko", LocalDate.parse("2000-01-30"), false));
+        osobaList.add(new Osoba("Patryk", "Orlowski", 2400, "ul.Koszykowa", LocalDate.parse("1992-05-12"), false));
         List<Osoba> osobaListBlock1 = new ArrayList<>();
-            osobaListBlock1.add(osobaList.get(1));
-            osobaListBlock1.add(osobaList.get(2));
-            osobaListBlock1.add(osobaList.get(5));
+        osobaListBlock1.add(osobaList.get(1));
+        osobaListBlock1.add(osobaList.get(2));
+        osobaListBlock1.add(osobaList.get(5));
         List<Osoba> osobaListBlock2 = new ArrayList<>();
-            osobaListBlock2.add(osobaList.get(3));
-            osobaListBlock2.add(osobaList.get(4));
-            osobaListBlock2.add(osobaList.get(6));
+        osobaListBlock2.add(osobaList.get(3));
+        osobaListBlock2.add(osobaList.get(4));
+        osobaListBlock2.add(osobaList.get(6));
         List<Osoba> osobaListBlock3 = new ArrayList<>();
-            osobaListBlock3.add(osobaList.get(7));
-            osobaListBlock3.add(osobaList.get(8));
-            osobaListBlock3.add(osobaList.get(9));
+        osobaListBlock3.add(osobaList.get(7));
+        osobaListBlock3.add(osobaList.get(8));
+        osobaListBlock3.add(osobaList.get(9));
 
         List<Osoba> listNajemca = new ArrayList<>();
-            listNajemca.add(osobaList.get(1));
-            listNajemca.add(osobaList.get(4));
-            listNajemca.add(osobaList.get(6));
+        listNajemca.add(osobaList.get(1));
+        listNajemca.add(osobaList.get(4));
+        listNajemca.add(osobaList.get(6));
 
         //------------------ BLOCKI ---------------------------
         Blok B1OS1 = new Blok(45, listNajemca, osobaListBlock1, 20);
@@ -58,11 +58,10 @@ public class Main {
         for (int i = 0; i < B3OS1.iloscMieszkan; i++) {
             mieszkanieList.add(new Mieszkanie(134.98)); // 111 - 189
         }
-        osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));
-
+        osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));//в помещениях не пишется что они наемцы
+        osobaList.get(3).mieszkanieList.add(mieszkanieList.get(74));//mieszka z najemcej
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(45));
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(64));
-
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(74));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(86));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(97));
@@ -78,9 +77,8 @@ public class Main {
             parkingList.add(new Parking(8671.0));
         }
         osobaList.get(1).parkingOsobaList.add(parkingList.get(12));
-
+        osobaList.get(3).parkingOsobaList.add(parkingList.get(34));
         osobaList.get(4).parkingOsobaList.add(parkingList.get(24));
-
         osobaList.get(6).parkingOsobaList.add(parkingList.get(33));
         // ------------------Transport-------------------------
         List<Transport> transportList = new ArrayList<>();
@@ -106,66 +104,69 @@ public class Main {
             przedmiotList.add(new Przedmiot("Stary fortepian",4.89, 5.6, 1.0));
             przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
             przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
-            przedmiotList.add(new Przedmiot("Spret",2.25, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Sprzet",2.25, 5.6, 5.0));
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
         //--- --------------------------------------------------
-        meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+        meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
     }
 
     // ------------------ MENU -----------------------------
-    public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList) {
+    public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             System.out.println("Meniu:");
-            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n");
+            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n10.Zobaczнс aktualną datę i godzinę. ");
             System.out.println("Wprowadz numer punktu meniu:");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             System.out.println();
-            if (idMeniu <= 9 && idMeniu > 0) {
+            if (idMeniu <= 10 && idMeniu > 0) {
                 switch (idMeniu) {
                     case 1:
                         System.out.println("Program jest zakonczony.");
                         System.exit(0);
                         break;
                     case 2:
-                        wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
+                        wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
                         break;
                     case 3:
-                        Osoba account3 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        Osoba account3 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         System.out.println(account3);
                         case3(account3);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         break;
                     case 4:
                         case4(mieszkanieList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
                         break;
                     case 5:
                         System.out.println("Wolne mieszkania: ");
                         case4(mieszkanieList);
-                        Osoba account5 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        Osoba account5 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         System.out.println(account5);
                         case5(mieszkanieList, account5);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
                         break;
                     case 6:
-                        Osoba account6 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        Osoba account6 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         System.out.println(account6);
                         case6(account6);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         break;
                     case 7:
-                        Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         System.out.println(account7);
-                        case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                     case 8:
 
                         break;
                     case 9:
+                        break;
+                    case 10:
+                        Zegar.zegar();
                         break;
                 }
             } else {
@@ -173,13 +174,13 @@ public class Main {
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
         } catch (AppartmentRentedException | AbsenceAppartmentException e) {
             e.printStackTrace();
         }
     }
 
-    public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList){
+    public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba>listNajemca){
         int numer = -1;
         try {
             System.out.println("Wprowadz PESEL:");
@@ -188,7 +189,9 @@ public class Main {
             for (int i = 0; i < osobaList.size(); i++) {
                 if (osobaList.get(i).pesel == wprPesel) {
                     numer = i;
-                    System.out.println("Pan/Pani na stronie danych: " + osobaList.get(i).imie + " " + osobaList.get(i).nazwisko);
+                    System.out.println("Pan/Pani na stronie danych: ");
+                    System.out.println();
+                    System.out.println(osobaList.get(i).imie + " " + osobaList.get(i).nazwisko);
                 }
             }
             if (numer == -1) {
@@ -196,20 +199,20 @@ public class Main {
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);;
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);;
         } catch (IndexOutOfBoundsException e){
             System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
         }
         return osobaList.get(numer);
     }
 
-    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList){
+    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList, List<Osoba>listNajemca){
         System.out.println("Wprowadz 0 jesli chcesz wrocic na poprzednia strone, lub dowolna liczbe zeby skonczyc program:");
         Scanner sc = new Scanner(System.in);
         int numer = sc.nextInt();
         if (numer == 0) {
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
         } else {
             System.out.println("Program jest zakonczony.");
         }
@@ -258,14 +261,13 @@ public class Main {
                 System.out.println("Pan/Pani wynajmowal(a) mieszkanie na 1 miesiac");
             }
         } catch (AbsenceAppartmentException | AppartmentRentedException e) {
-            System.out.println(e);
+            System.out.println("Exception: Bledne dane!");
             case5(mieszkanieList, account);
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             case5(mieszkanieList, account);
         }
     }
-
     public static void case6(Osoba account){
         for (int i = 0; i < account.mieszkanieList.size(); i++) {
             System.out.println(account.mieszkanieList.get(i));
@@ -280,24 +282,24 @@ public class Main {
         }
     }
 
-    public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList) {
+    public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList, List<Osoba>listNajemca) {
         try{
-            System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobac wszyskie swoje pojazdy \n 5. Zobac wszyskie swoje przedmioty");
+            System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n 5. Zobaczyc wszyskie swoje przedmioty");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             if(idMeniu <=3  && idMeniu >=1 ){
                 switch (idMeniu){
                     case 1:
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
                         break;
                     case 2:
-                        dodaniePojazdu(account);
+                        dodanieTransportu(account);
                         break;
                     case 3:
                         dodaniePrzedmiotu(account);
                         break;
                     case 4:
-                        wszystkiePojazdyOsoby(account);
+                        wszystkieTransportyOsoby(account);
                         break;
                     case 5:
                         wszystkiePrzedmiotyOsoby(account);
@@ -311,7 +313,7 @@ public class Main {
         }
     }
 
-    public static void dodaniePojazdu(Osoba account){
+    public static void dodanieTransportu(Osoba account){
 
     }
 
@@ -319,7 +321,7 @@ public class Main {
 
     }
 
-    public static void wszystkiePojazdyOsoby(Osoba account){
+    public static void wszystkieTransportyOsoby(Osoba account){
 
     }
 
