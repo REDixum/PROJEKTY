@@ -2,15 +2,12 @@ package Projekt_1;
 
 import Projekt_1.Exceptions.AbsenceAppartmentException;
 import Projekt_1.Exceptions.AppartmentRentedException;
-import Projekt_1.Exceptions.WrongNumberPeselException;
 import Projekt_1.Objekty.*;
 
 import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
-    Scanner sc = new Scanner(System.in);
-
     public static void main(String[] args) {
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
@@ -53,25 +50,38 @@ public class Main {
         // ------------------ MIESZKANIE -----------------------
         List<Mieszkanie> mieszkanieList = new ArrayList<>();
         for (int i = 0; i < B1OS1.iloscMieszkan; i++) {
-            mieszkanieList.add(new Mieszkanie(276.84));
+            mieszkanieList.add(new Mieszkanie(276.84)); // 0 - 45
         }
         for (int i = 0; i < B2OS1.iloscMieszkan; i++) {
-            mieszkanieList.add(new Mieszkanie(234.3));
+            mieszkanieList.add(new Mieszkanie(234.3));  // 46 - 110
         }
         for (int i = 0; i < B3OS1.iloscMieszkan; i++) {
-            mieszkanieList.add(new Mieszkanie(134.98));
+            mieszkanieList.add(new Mieszkanie(134.98)); // 111 - 189
         }
+        osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));
+
+        osobaList.get(4).mieszkanieList.add(mieszkanieList.get(45));
+        osobaList.get(4).mieszkanieList.add(mieszkanieList.get(64));
+
+        osobaList.get(6).mieszkanieList.add(mieszkanieList.get(74));
+        osobaList.get(6).mieszkanieList.add(mieszkanieList.get(86));
+        osobaList.get(6).mieszkanieList.add(mieszkanieList.get(97));
         //------------------- PARKING --------------------------
         List<Parking> parkingList = new ArrayList<>();
-        for (int i = 0; i < B1OS1.iloscParkingMiejsc; i++) {
+        for (int i = 0; i < B1OS1.iloscParkingMiejsc; i++) { // 0 - 20
             parkingList.add(new Parking(336.74));
         }
-        for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) {
+        for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 21 - 35
             parkingList.add(new Parking(2743.2));
         }
-        for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) {
+        for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 36 - 45
             parkingList.add(new Parking(8671.0));
         }
+        osobaList.get(1).parkingOsobaList.add(parkingList.get(12));
+
+        osobaList.get(4).parkingOsobaList.add(parkingList.get(24));
+
+        osobaList.get(6).parkingOsobaList.add(parkingList.get(33));
         // ------------------Transport-------------------------
         List<Transport> transportList = new ArrayList<>();
             transportList.add(new SamochodMiejski("BWM", 193, "Sportowy", "Elektryczny", "Czarny", 1, "NG78IR", "Letni", 2.23, 3.1, 1.1));
@@ -87,16 +97,16 @@ public class Main {
             //test
         // ---------------- Przedmioty -----------------------
         List<Objekt> przedmiotList = new ArrayList<>();
-        przedmiotList.add(new Przedmiot("Sprzet sportowy",3.4, 5.6, 5.0));
-        przedmiotList.add(new Przedmiot("Hulajnoga",0.23, 2.6, 1.0));
-        przedmiotList.add(new Przedmiot("Rower",0.23, 2.6, 1.0));
-        przedmiotList.add(new Przedmiot("Opony",0.4, 1.4, 1.4));
-        przedmiotList.add(new Przedmiot("Alkohol",3.1, 5.6, 5.0));
-        przedmiotList.add(new Przedmiot("Rowery",2.9, 5.6, 1.0));
-        przedmiotList.add(new Przedmiot("Stary fortepian",4.89, 5.6, 1.0));
-        przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
-        przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
-        przedmiotList.add(new Przedmiot("Spret",2.25, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Sprzet sportowy",3.4, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Hulajnoga",0.23, 2.6, 1.0));
+            przedmiotList.add(new Przedmiot("Rower",0.23, 2.6, 1.0));
+            przedmiotList.add(new Przedmiot("Opony",0.4, 1.4, 1.4));
+            przedmiotList.add(new Przedmiot("Alkohol",3.1, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Rowery",2.9, 5.6, 1.0));
+            przedmiotList.add(new Przedmiot("Stary fortepian",4.89, 5.6, 1.0));
+            przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
+            przedmiotList.add(new Przedmiot("Spret",2.25, 5.6, 5.0));
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
             osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
@@ -106,15 +116,15 @@ public class Main {
 
     // ------------------ MENU -----------------------------
     public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList) {
-        System.out.println("Meniu:");
-        System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n");
-        System.out.println("Wprowadz numer punktu meniu:");
         try {
+            System.out.println("Meniu:");
+            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n");
+            System.out.println("Wprowadz numer punktu meniu:");
             Scanner sc = new Scanner(System.in);
-            int dane = sc.nextInt();
+            int idMeniu = sc.nextInt();
             System.out.println();
-            if (dane <= 9 && dane > 0) {
-                switch (dane) {
+            if (idMeniu <= 9 && idMeniu > 0) {
+                switch (idMeniu) {
                     case 1:
                         System.out.println("Program jest zakonczony.");
                         System.exit(0);
@@ -150,7 +160,7 @@ public class Main {
                     case 7:
                         Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         System.out.println(account7);
-                        case7(account7);
+                        case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
                     case 8:
 
@@ -270,10 +280,54 @@ public class Main {
         }
     }
 
-    public static void case7(Osoba account) {
-        System.out.println("1. Dodac pojazd do parkingowego miejsca");
-        System.out.println("2. Dodac przedmiot do parkingowego miejsca");
+    public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList) {
+        try{
+            System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobac wszyskie swoje pojazdy \n 5. Zobac wszyskie swoje przedmioty");
+            Scanner sc = new Scanner(System.in);
+            int idMeniu = sc.nextInt();
+            if(idMeniu <=3  && idMeniu >=1 ){
+                switch (idMeniu){
+                    case 1:
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList);
+                        break;
+                    case 2:
+                        dodaniePojazdu(account);
+                        break;
+                    case 3:
+                        dodaniePrzedmiotu(account);
+                        break;
+                    case 4:
+                        wszystkiePojazdyOsoby(account);
+                        break;
+                    case 5:
+                        wszystkiePrzedmiotyOsoby(account);
+                        break;
+                }
+            } else {
+                throw new InputMismatchException();
+            }
+        } catch(InputMismatchException e){
+            System.out.println("Exception: Bledne dane!");
+        }
     }
+
+    public static void dodaniePojazdu(Osoba account){
+
+    }
+
+    public static void dodaniePrzedmiotu(Osoba account){
+
+    }
+
+    public static void wszystkiePojazdyOsoby(Osoba account){
+
+    }
+
+    public static void wszystkiePrzedmiotyOsoby(Osoba account){
+
+    }
+
+
 }
 
 

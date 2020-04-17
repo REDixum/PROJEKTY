@@ -5,16 +5,17 @@ import Projekt_1.Objekty.Transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parking extends WynajmMieszkanie{
-    int poleParking = 10; // w metrach kwadratnych
-    int wolneMiejsceParking;
-    int zajenteMiejsce;
+public class Parking{
+    double wolneMiejsceParking;
+    double zajenteMiejsce;
     List<Transport> transportList;
     List<Objekt> przedmiotList;
+    double objetosc;
 
-    public Parking( double objetosc) {
-        super(objetosc);
+    public Parking(double objetosc) {
+        this.objetosc = objetosc;
         this.transportList = new ArrayList<>();
         this.przedmiotList = new ArrayList<>();
+        this.wolneMiejsceParking = objetosc;
     }
 }
