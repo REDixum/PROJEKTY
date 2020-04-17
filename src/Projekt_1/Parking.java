@@ -5,9 +5,10 @@ import Projekt_1.Objekty.Transport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parking{
-    double wolneMiejsceParking;
-    double zajenteMiejsce;
+public class Parking {
+    int poleParking = 10; // w metrach kwadratnych
+    int wolneMiejsceParking;
+    int zajenteMiejsce;
     List<Transport> transportList;
     List<Objekt> przedmiotList;
     double objetosc;
@@ -16,6 +17,5 @@ public class Parking{
         this.objetosc = objetosc;
         this.transportList = new ArrayList<>();
         this.przedmiotList = new ArrayList<>();
-        this.wolneMiejsceParking = objetosc;
     }
 }
