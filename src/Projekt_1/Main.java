@@ -82,34 +82,34 @@ public class Main {
         osobaList.get(6).parkingOsobaList.add(parkingList.get(33));
         // ------------------Transport-------------------------
         List<Transport> transportList = new ArrayList<>();
-            transportList.add(new SamochodMiejski("BWM", 193, "Sportowy", "Elektryczny", "Czarny", 1, "NG78IR", "Letni", 2.23, 3.1, 1.1));
-            transportList.add(new Motocykl("Harley", 265, "Turystyczny", "Jonowy", "Czerwony", 2, "TY43GH", 300, 1.0, 2.5, 0.85));
-            transportList.add(new Lodz("Horizon", 286, "Motorowy", "Motorowy", "Bialy", 5, "CH54IE", 1, 5.67, 9.087, 7.89));
-            transportList.add(new SamochodMiejski("Mercedes", 210, "Miejski", "Hydrauliczny", "Szary", 4, "AV21JG", "Zimowy", 3, 6.789, 1.234));
-            transportList.add(new Amfibia("Lilos", 500, "Sportowy", "Hydrauliczny", "Rozowy", 10, "IO67FG", 8, 12.09, 22.09, 7.65));
-            transportList.add(new SamochodMiejski("Ferrari", 300, "Sportowy", "Hydrauliczny", "Bialy", 1, "AM320NM", "Sportowy", 1.22, 2.34, 0.98));
-            transportList.add(new SamochodTerenowy("BMW", 250, "Turystyczny", "Hydrauliczny", "Czarny", 6, "JI67SX", 50, 2.33, 3.5, 2.45));
-            transportList.add(new Lodz("Honda", 90, "Motorowy", "Hydraliczny", "Bialy", 6, "WAW123RK", 2, 7.7, 10.67, 5.6));
-            transportList.add(new Motocykl("Hyundai", 222, "Cruiser", "Electryczny", "Granatowy", 1, "SPI456TM", 220, 1.11, 3.43, 1.12));
-            transportList.add(new SamochodMiejski("Mazda", 190, "Miejski", "Elektryczny", "Bialy", 4, "ERA75TM", "Letni", 1.76, 2.3, 2.3));
-            //test
+        transportList.add(new SamochodMiejski("BWM", 193, "Sportowy", "Elektryczny", "Czarny", 1, "NG78IR", "Letni", 2.23, 3.1, 1.1));
+        transportList.add(new Motocykl("Harley", 265, "Turystyczny", "Jonowy", "Czerwony", 2, "TY43GH", 300, 1.0, 2.5, 0.85));
+        transportList.add(new Lodz("Horizon", 286, "Motorowy", "Motorowy", "Bialy", 5, "CH54IE", 1, 5.67, 9.087, 7.89));
+        transportList.add(new SamochodMiejski("Mercedes", 210, "Miejski", "Hydrauliczny", "Szary", 4, "AV21JG", "Zimowy", 3, 6.789, 1.234));
+        transportList.add(new Amfibia("Lilos", 500, "Sportowy", "Hydrauliczny", "Rozowy", 10, "IO67FG", 8, 12.09, 22.09, 7.65));
+        transportList.add(new SamochodMiejski("Ferrari", 300, "Sportowy", "Hydrauliczny", "Bialy", 1, "AM320NM", "Sportowy", 1.22, 2.34, 0.98));
+        transportList.add(new SamochodTerenowy("BMW", 250, "Turystyczny", "Hydrauliczny", "Czarny", 6, "JI67SX", 50, 2.33, 3.5, 2.45));
+        transportList.add(new Lodz("Honda", 90, "Motorowy", "Hydraliczny", "Bialy", 6, "WAW123RK", 2, 7.7, 10.67, 5.6));
+        transportList.add(new Motocykl("Hyundai", 222, "Cruiser", "Electryczny", "Granatowy", 1, "SPI456TM", 220, 1.11, 3.43, 1.12));
+        transportList.add(new SamochodMiejski("Mazda", 190, "Miejski", "Elektryczny", "Bialy", 4, "ERA75TM", "Letni", 1.76, 2.3, 2.3));
+        //test
         // ---------------- Przedmioty -----------------------
         List<Objekt> przedmiotList = new ArrayList<>();
-            przedmiotList.add(new Przedmiot("Sprzet sportowy",3.4, 5.6, 5.0));
-            przedmiotList.add(new Przedmiot("Hulajnoga",0.23, 2.6, 1.0));
-            przedmiotList.add(new Przedmiot("Rower",0.23, 2.6, 1.0));
-            przedmiotList.add(new Przedmiot("Opony",0.4, 1.4, 1.4));
-            przedmiotList.add(new Przedmiot("Alkohol",3.1, 5.6, 5.0));
-            przedmiotList.add(new Przedmiot("Rowery",2.9, 5.6, 1.0));
-            przedmiotList.add(new Przedmiot("Stary fortepian",4.89, 5.6, 1.0));
-            przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ",7.7, 5.6, 5.0));
-            przedmiotList.add(new Przedmiot("Namiot kempingowy",1.07, 5.6, 5.0));
-            przedmiotList.add(new Przedmiot("Sprzet",2.25, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Sprzet sportowy", 3.4, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Hulajnoga", 0.23, 2.6, 1.0));
+        przedmiotList.add(new Przedmiot("Rower", 0.23, 2.6, 1.0));
+        przedmiotList.add(new Przedmiot("Opony", 0.4, 1.4, 1.4));
+        przedmiotList.add(new Przedmiot("Alkohol", 3.1, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Rowery", 2.9, 5.6, 1.0));
+        przedmiotList.add(new Przedmiot("Stary fortepian", 4.89, 5.6, 1.0));
+        przedmiotList.add(new Przedmiot("Przedmioty z poprzedniego ", 7.7, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Namiot kempingowy", 1.07, 5.6, 5.0));
+        przedmiotList.add(new Przedmiot("Sprzet", 2.25, 5.6, 5.0));
         // ------------------ OSIEDLE --------------------------
         List<Osiedla> osiedlaList = new ArrayList<>();
-            osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
-        //--- --------------------------------------------------
-        meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+        osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
+        //-------------------------------------------------------
+        meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
     }
 
     // ------------------ MENU -----------------------------
@@ -128,38 +128,38 @@ public class Main {
                         System.exit(0);
                         break;
                     case 2:
-                        wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
+                        wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 3:
-                        Osoba account3 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        Osoba account3 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         System.out.println(account3);
                         case3(account3);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 4:
                         case4(mieszkanieList);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 5:
                         System.out.println("Wolne mieszkania: ");
                         case4(mieszkanieList);
-                        Osoba account5 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        Osoba account5 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         System.out.println(account5);
                         case5(mieszkanieList, account5);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList,przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 6:
-                        Osoba account6 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        Osoba account6 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         System.out.println(account6);
                         case6(account6);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 7:
-                        Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        Osoba account7 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         System.out.println(account7);
-                        case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                     case 8:
 
                         break;
@@ -174,13 +174,13 @@ public class Main {
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         } catch (AppartmentRentedException | AbsenceAppartmentException e) {
             e.printStackTrace();
         }
     }
 
-    public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba>listNajemca){
+    public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         int numer = -1;
         try {
             System.out.println("Wprowadz PESEL:");
@@ -199,32 +199,33 @@ public class Main {
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);;
-        } catch (IndexOutOfBoundsException e){
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+            ;
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Exception: Takiego czlowieka nie ma w bazie danych!");
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
         return osobaList.get(numer);
     }
 
-    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList, List<Osoba>listNajemca){
+    public static void wyjscie(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         System.out.println("Wprowadz 0 jesli chcesz wrocic na poprzednia strone, lub dowolna liczbe zeby skonczyc program:");
         Scanner sc = new Scanner(System.in);
         int numer = sc.nextInt();
         if (numer == 0) {
-            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+            meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         } else {
             System.out.println("Program jest zakonczony.");
         }
     }
 
-    public static void case3(Osoba account){
+    public static void case3(Osoba account) {
         for (int i = 0; i < account.mieszkanieList.size(); i++) {
             System.out.println(account.mieszkanieList.get(i));
         }
     }
 
-    public static void case4(List<Mieszkanie> mieszkanieList){
+    public static void case4(List<Mieszkanie> mieszkanieList) {
         for (int i = 0; i < mieszkanieList.size(); i++) {
             if (mieszkanieList.get(i).najemca == null) {
                 System.out.println(mieszkanieList.get(i));
@@ -268,7 +269,8 @@ public class Main {
             case5(mieszkanieList, account);
         }
     }
-    public static void case6(Osoba account){
+
+    public static void case6(Osoba account) {
         for (int i = 0; i < account.mieszkanieList.size(); i++) {
             System.out.println(account.mieszkanieList.get(i));
         }
@@ -282,15 +284,15 @@ public class Main {
         }
     }
 
-    public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt>przedmiotList, List<Osoba>listNajemca) {
-        try{
+    public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
+        try {
             System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n 5. Zobaczyc wszyskie swoje przedmioty");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
-            if(idMeniu <=3  && idMeniu >=1 ){
-                switch (idMeniu){
+            if (idMeniu <= 3 && idMeniu >= 1) {
+                switch (idMeniu) {
                     case 1:
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList,listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 2:
                         dodanieTransportu(account);
@@ -308,24 +310,24 @@ public class Main {
             } else {
                 throw new InputMismatchException();
             }
-        } catch(InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
         }
     }
 
-    public static void dodanieTransportu(Osoba account){
+    public static void dodanieTransportu(Osoba account) {
 
     }
 
-    public static void dodaniePrzedmiotu(Osoba account){
+    public static void dodaniePrzedmiotu(Osoba account) {
 
     }
 
-    public static void wszystkieTransportyOsoby(Osoba account){
+    public static void wszystkieTransportyOsoby(Osoba account) {
 
     }
 
-    public static void wszystkiePrzedmiotyOsoby(Osoba account){
+    public static void wszystkiePrzedmiotyOsoby(Osoba account) {
 
     }
 
