@@ -12,7 +12,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        new Timer().schedule(new PrzesuniecieZegara(), 0 , 5000);
+        new Timer().schedule(new PrzesuniecieZegara(), 0, 5000);
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
         osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
@@ -331,15 +331,15 @@ public class Main {
             boolean sprawdzMiejsce = false;
             boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if (numerTransportu == account.transportOsobaList.get(i).numerRejestracijny) {  // NG78IR
+                if ((numerTransportu == account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
                     System.out.println("Transport jest znaleziony!");
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
                     System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
+                    spawdzTransport = true;
                     idTransportTab = i;
                     break;
                 }
             }
-            //
             if (spawdzTransport == false) {
                 throw new AbsenceOsobaTransportException();
             }
@@ -357,7 +357,7 @@ public class Main {
                 }
             }
 
-            if(sprawdzMiejsce == false){
+            if (sprawdzMiejsce == false) {
                 throw new NotEnoughSpaceParkingException();
             }
         } catch (InputMismatchException e) {
@@ -369,7 +369,25 @@ public class Main {
         }
     }
 
-    public static void dodaniePrzedmiotu(Osoba account) {
+
+    public static void dodaniePrzedmiotu(Osoba account) throws AbsenceOsobaTransportException {
+        System.out.println("Wpisz numer indefikacyjny przedmiotu: ");
+        Scanner sc = new Scanner(System.in);
+        int numerIndyfikacyjnyPrzedmiotu = sc.nextInt();
+        boolean sprawzdPrzedmiot = false;
+        boolean sprawzdMiejsce = false;
+        for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
+            if ((numerIndyfikacyjnyPrzedmiotu == (account.przedmiotOsobaList.get(i).numerIndefikacyjnyPrzedmiotu))) {
+                System.out.println("Przedmiot jest znalieziony!");
+                System.out.println("Objetosc przedmiotu: " + account.przedmiotOsobaList.get(i).objetosc);
+                sprawzdPrzedmiot = true;
+                break;
+            }
+            if (sprawzdPrzedmiot = false) {
+                throw new AbsenceOsobaTransportException();
+            }
+
+        }
 
     }
 
@@ -378,16 +396,14 @@ public class Main {
     }
 
     public static void wszystkiePrzedmiotyOsoby(Osoba account) {
-
+        System.out.println(account.przedmiotOsobaList);
     }
 
-    public static void wywolanieParkingu(Osoba account){
-        for(int i = 0; i < account.parkingOsobaList.size(); i++){
+    public static void wywolanieParkingu(Osoba account) {
+        for (int i = 0; i < account.parkingOsobaList.size(); i++) {
             System.out.println(account.parkingOsobaList.get(i));
         }
     }
-
-
 }
 
 
