@@ -1,13 +1,16 @@
 package Projekt_1;
 
 import Projekt_1.Exceptions.AbsenceAppartmentException;
+import Projekt_1.Exceptions.AbsenceOsobaTransportException;
 import Projekt_1.Exceptions.AppartmentRentedException;
+import Projekt_1.Exceptions.NotEnoughSpaceParkingException;
 import Projekt_1.Objekty.*;
 
 import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
         new Timer().schedule(new PrzesuniecieZegara(), 0 , 5000);
         // -------------------   OSOBY  -----------------------
@@ -18,7 +21,7 @@ public class Main {
         osobaList.add(new Osoba("Lesha", "Vasczilo", 2300, "ul.Pobiedzitieliej", LocalDate.parse("2002-09-06"), false));
         osobaList.add(new Osoba("Nikita", "Demczenko", 5983, "ul.Golobiewa", LocalDate.parse("2002-03-09"), true));  // najemca
         osobaList.add(new Osoba("Maciej", "Noskow", 3480, "ul.Tankistow", LocalDate.parse("1967-12-10"), false));
-        osobaList.add(new Osoba("Wadim", "Pupkin", 9754, "ul.Lorzkina", LocalDate.parse("2007-11-06"), true));  // najemca
+        osobaList.add(new Osoba("Wadim", "Pupkin", 1234, "ul.Lorzkina", LocalDate.parse("2007-11-06"), true));  // najemca
         osobaList.add(new Osoba("Artem", "Klimowicz", 7007, "ul.Woronicza", LocalDate.parse("1889-04-30"), false));
         osobaList.add(new Osoba("Lesha", "Kosteniewicz", 1111, "ul.Moloszenko", LocalDate.parse("2000-01-30"), false));
         osobaList.add(new Osoba("Patryk", "Orlowski", 2400, "ul.Koszykowa", LocalDate.parse("1992-05-12"), false));
@@ -69,13 +72,13 @@ public class Main {
         //------------------- PARKING --------------------------
         List<Parking> parkingList = new ArrayList<>();
         for (int i = 0; i < B1OS1.iloscParkingMiejsc; i++) { // 0 - 20
-            parkingList.add(new Parking(336.74));
+            parkingList.add(new Parking(25));
         }
         for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 21 - 35
-            parkingList.add(new Parking(2743.2));
+            parkingList.add(new Parking(30));
         }
         for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 36 - 45
-            parkingList.add(new Parking(8671.0));
+            parkingList.add(new Parking(40));
         }
         osobaList.get(1).parkingOsobaList.add(parkingList.get(12));
         osobaList.get(3).parkingOsobaList.add(parkingList.get(34));
@@ -93,7 +96,8 @@ public class Main {
         transportList.add(new Lodz("Honda", 90, "Motorowy", "Hydraliczny", "Bialy", 6, "WAW123RK", 2, 7.7, 10.67, 5.6));
         transportList.add(new Motocykl("Hyundai", 222, "Cruiser", "Electryczny", "Granatowy", 1, "SPI456TM", 220, 1.11, 3.43, 1.12));
         transportList.add(new SamochodMiejski("Mazda", 190, "Miejski", "Elektryczny", "Bialy", 4, "ERA75TM", "Letni", 1.76, 2.3, 2.3));
-        //test
+
+        osobaList.get(6).transportOsobaList.add(transportList.get(0));
         // ---------------- Przedmioty -----------------------
         List<Objekt> przedmiotList = new ArrayList<>();
         przedmiotList.add(new Przedmiot("Sprzet sportowy", 3.4, 5.6, 5.0));
@@ -291,7 +295,7 @@ public class Main {
             System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n 5. Zobaczyc wszyskie swoje przedmioty");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
-            if (idMeniu <= 3 && idMeniu >= 1) {
+            if (idMeniu <= 5 && idMeniu >= 1) {
                 switch (idMeniu) {
                     case 1:
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -312,13 +316,52 @@ public class Main {
             } else {
                 throw new InputMismatchException();
             }
-        } catch (InputMismatchException e) {
+        } catch (InputMismatchException | AbsenceOsobaTransportException e) {
             System.out.println("Exception: Bledne dane!");
         }
     }
 
-    public static void dodanieTransportu(Osoba account) {
-
+    public static void dodanieTransportu(Osoba account) throws AbsenceOsobaTransportException {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wprowadz numer rejestracijny transportu!");
+            String numerTransportu = sc.nextLine();
+            int idTransportTab = 0;
+            boolean sprawdzMiejsce = false;
+            boolean spawdzTransportu = false;
+            for (int i = 0; i < account.transportOsobaList.size(); i++) {
+                if ((numerTransportu.equals(account.transportOsobaList.get(i).numerRejestracijny))) {  // NG78IR
+                    System.out.println("Transport jest znaleziony!");
+                    System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
+                    spawdzTransportu = true;
+                    idTransportTab = i;
+                    break;
+                }
+            }
+            if (spawdzTransportu = false) {
+                throw new AbsenceOsobaTransportException("Exception: Pan/Pani nie ma takiego transportu!");
+            }
+            for (int i = 0; i < account.parkingOsobaList.size(); i++) {
+                System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
+                if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {  // spawdzTransportu == true && (
+                    account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransportTab));
+                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking -  account.transportOsobaList.get(idTransportTab).objetosc;
+                    account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransportTab).objetosc;
+                    System.out.println("Transport dodany do parkingowego miejsca");
+                    sprawdzMiejsce = true;
+                    break;
+                }
+            }
+            if(sprawdzMiejsce == false){
+                throw new NotEnoughSpaceParkingException("Exception: Nie dostatnio miejsca");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Exception: Bledne dane!");
+            dodanieTransportu(account);
+        } catch(AbsenceOsobaTransportException | NotEnoughSpaceParkingException e) {
+            System.out.println(e.toString());
+            dodanieTransportu(account);
+        }
     }
 
     public static void dodaniePrzedmiotu(Osoba account) {
@@ -326,7 +369,7 @@ public class Main {
     }
 
     public static void wszystkieTransportyOsoby(Osoba account) {
-
+        System.out.println(account.transportOsobaList);
     }
 
     public static void wszystkiePrzedmiotyOsoby(Osoba account) {
