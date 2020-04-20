@@ -181,8 +181,6 @@ public class Main {
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-        } catch (AppartmentRentedException | AbsenceAppartmentException e) {
-            e.printStackTrace();
         }
     }
 
@@ -239,7 +237,7 @@ public class Main {
         }
     }
 
-    public static void case5(List<Mieszkanie> mieszkanieList, Osoba account) throws AbsenceAppartmentException, AppartmentRentedException {
+    public static void case5(List<Mieszkanie> mieszkanieList, Osoba account) {
         try {
             boolean sprawdzenieMieszkania = false;
             boolean sprawdzanieNajemcy = false;
@@ -292,10 +290,10 @@ public class Main {
 
     public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
-            System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n 5. Zobaczyc wszyskie swoje przedmioty");
+            System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
-            if (idMeniu <= 5 && idMeniu >= 1) {
+            if (idMeniu <= 6 && idMeniu >= 1) {
                 switch (idMeniu) {
                     case 1:
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -312,48 +310,55 @@ public class Main {
                     case 5:
                         wszystkiePrzedmiotyOsoby(account);
                         break;
+                    case 6:
+                        wywolanieParkingu(account);
+                        break;
                 }
             } else {
                 throw new InputMismatchException();
             }
-        } catch (InputMismatchException | AbsenceOsobaTransportException e) {
+        } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
         }
     }
 
-    public static void dodanieTransportu(Osoba account) throws AbsenceOsobaTransportException {
+    public static void dodanieTransportu(Osoba account) {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Wprowadz numer rejestracijny transportu!");
             String numerTransportu = sc.nextLine();
             int idTransportTab = 0;
             boolean sprawdzMiejsce = false;
-            boolean spawdzTransportu = false;
+            boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if ((numerTransportu.equals(account.transportOsobaList.get(i).numerRejestracijny))) {  // NG78IR
+                if ((numerTransportu == account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
                     System.out.println("Transport jest znaleziony!");
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
-                    spawdzTransportu = true;
+                    System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
+                    spawdzTransport = true;
                     idTransportTab = i;
                     break;
                 }
             }
-            if (spawdzTransportu = false) {
-                throw new AbsenceOsobaTransportException("Exception: Pan/Pani nie ma takiego transportu!");
+            if (spawdzTransport == false) {
+                throw new AbsenceOsobaTransportException();
             }
-            for (int i = 0; i < account.parkingOsobaList.size(); i++) {
-                System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
-                if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {  // spawdzTransportu == true && (
-                    account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransportTab));
-                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking -  account.transportOsobaList.get(idTransportTab).objetosc;
-                    account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransportTab).objetosc;
-                    System.out.println("Transport dodany do parkingowego miejsca");
-                    sprawdzMiejsce = true;
-                    break;
+            if(spawdzTransport == true) {
+                for (int i = 0; i < account.parkingOsobaList.size(); i++) {
+                    System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {  // spawdzTransportu == true && (
+                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransportTab));
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransportTab).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransportTab).objetosc;
+                        System.out.println("Transport dodany do parkingowego miejsca");
+                        sprawdzMiejsce = true;
+                        break;
+                    }
                 }
             }
+
             if(sprawdzMiejsce == false){
-                throw new NotEnoughSpaceParkingException("Exception: Nie dostatnio miejsca");
+                throw new NotEnoughSpaceParkingException();
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
@@ -374,6 +379,12 @@ public class Main {
 
     public static void wszystkiePrzedmiotyOsoby(Osoba account) {
 
+    }
+
+    public static void wywolanieParkingu(Osoba account){
+        for(int i = 0; i < account.parkingOsobaList.size(); i++){
+            System.out.println(account.parkingOsobaList.get(i));
+        }
     }
 
 
