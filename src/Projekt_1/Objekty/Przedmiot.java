@@ -1,9 +1,12 @@
 package Projekt_1.Objekty;
 
 public class Przedmiot extends Objekt {
-    String nazwa;
-    public Przedmiot(String nazwa, double szerokosc, double dlugosc, double wysokosc) {
+    public String nazwa;
+    public int numerIndefikacyjnyPrzedmiotu;
+
+    public Przedmiot(int numerIndefikacyjnyPrzedmiotu, String nazwa, double szerokosc, double dlugosc, double wysokosc) {
         super(szerokosc, dlugosc, wysokosc);
-        this.nazwa=nazwa;
+        this.nazwa = nazwa;
+        this.numerIndefikacyjnyPrzedmiotu = numerIndefikacyjnyPrzedmiotu;
     }
 }
