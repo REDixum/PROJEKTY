@@ -377,12 +377,12 @@ public class Main {
         boolean sprawzdPrzedmiot = false;
         boolean sprawzdMiejsce = false;
         for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
-            if ((numerIndyfikacyjnyPrzedmiotu == (account.przedmiotOsobaList.get(i).numerIndefikacyjnyPrzedmiotu))) {
-                System.out.println("Przedmiot jest znalieziony!");
-                System.out.println("Objetosc przedmiotu: " + account.przedmiotOsobaList.get(i).objetosc);
-                sprawzdPrzedmiot = true;
-                break;
-            }
+//            if ((numerIndyfikacyjnyPrzedmiotu == (account.przedmiotOsobaList.get(i)))) {
+//                System.out.println("Przedmiot jest znalieziony!");
+//                System.out.println("Objetosc przedmiotu: " + account.przedmiotOsobaList.get(i).objetosc);
+//                sprawzdPrzedmiot = true;
+//                break;
+//            }
             if (sprawzdPrzedmiot = false) {
                 throw new AbsenceOsobaTransportException();
             }

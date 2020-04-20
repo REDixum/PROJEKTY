@@ -4,9 +4,8 @@ public class Przedmiot extends Objekt {
     public String nazwa;
     public int numerIndefikacyjnyPrzedmiotu;
 
-    public Przedmiot(int numerIndefikacyjnyPrzedmiotu, String nazwa, double szerokosc, double dlugosc, double wysokosc) {
+    public Przedmiot(String nazwa, double szerokosc, double dlugosc, double wysokosc) {
         super(szerokosc, dlugosc, wysokosc);
         this.nazwa = nazwa;
-        this.numerIndefikacyjnyPrzedmiotu = numerIndefikacyjnyPrzedmiotu;
     }
 }
