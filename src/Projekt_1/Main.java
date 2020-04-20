@@ -331,15 +331,15 @@ public class Main {
             boolean sprawdzMiejsce = false;
             boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if ((numerTransportu == account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
+                if (numerTransportu == account.transportOsobaList.get(i).numerRejestracijny) {  // NG78IR
                     System.out.println("Transport jest znaleziony!");
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
                     System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
-                    spawdzTransport = true;
                     idTransportTab = i;
                     break;
                 }
             }
+            //
             if (spawdzTransport == false) {
                 throw new AbsenceOsobaTransportException();
             }
