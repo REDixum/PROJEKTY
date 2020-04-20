@@ -291,6 +291,7 @@ public class Main {
     public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
+            System.out.println("Wprowadz punkt mieniu: ");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             if (idMeniu <= 6 && idMeniu >= 1) {
@@ -331,7 +332,7 @@ public class Main {
             boolean sprawdzMiejsce = false;
             boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if ((numerTransportu == account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
+                if ((numerTransportu.equals(account.transportOsobaList.get(i).numerRejestracijny))) {  // NG78IR
                     System.out.println("Transport jest znaleziony!");
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
                     System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
@@ -346,7 +347,7 @@ public class Main {
             if(spawdzTransport == true) {
                 for (int i = 0; i < account.parkingOsobaList.size(); i++) {
                     System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
-                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {  // spawdzTransportu == true && (
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {
                         account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransportTab));
                         account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransportTab).objetosc;
                         account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransportTab).objetosc;
@@ -363,14 +364,14 @@ public class Main {
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             dodanieTransportu(account);
-        } catch(AbsenceOsobaTransportException | NotEnoughSpaceParkingException e) {
+        } catch (AbsenceOsobaTransportException | NotEnoughSpaceParkingException e) {
             System.out.println(e.toString());
             dodanieTransportu(account);
         }
     }
 
 
-    public static void dodaniePrzedmiotu(Osoba account) throws AbsenceOsobaTransportException {
+    public static void dodaniePrzedmiotu(Osoba account) {
         System.out.println("Wpisz numer indefikacyjny przedmiotu: ");
         Scanner sc = new Scanner(System.in);
         int numerIndyfikacyjnyPrzedmiotu = sc.nextInt();
@@ -384,7 +385,7 @@ public class Main {
 //                break;
 //            }
             if (sprawzdPrzedmiot = false) {
-                throw new AbsenceOsobaTransportException();
+
             }
 
         }
