@@ -11,16 +11,20 @@ public class Parking {
     List<Transport> transportList;
     List<Objekt> przedmiotList;
     double objetosc;
+    public int numerIndyfikacyjny;
+    private static int indeks = 0;
 
     public Parking(double objetosc) {
         this.objetosc = objetosc;
         this.transportList = new ArrayList<>();
         this.przedmiotList = new ArrayList<>();
         this.wolneMiejsceParking = objetosc;
+        this.numerIndyfikacyjny = ++indeks;
     }
 
     public String toString(){
-        return "Objetosc: " + this.objetosc + "\n" +
+        return  "ID: " + this.numerIndyfikacyjny + "\n" +
+                "Objetosc: " + this.objetosc + "\n" +
                 "Wolne miejsce: " + this.wolneMiejsceParking + "\n" +
                 "Zajente miejsce " + this.zajenteMiejsce + "\n" +
                 "Transporty: " + this.transportList + "\n" +

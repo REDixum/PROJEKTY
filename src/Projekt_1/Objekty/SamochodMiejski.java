@@ -6,4 +6,9 @@ public class SamochodMiejski extends Transport {
         super(szerokosc, dlugosc, wysokosc, marka, pojemnoscSilnika, typ, typSilnika, kolor, iloscMiejsc, numerRejestracijny);
         this.typOpon = typOpon;
     }
+    public String toString(){
+        return "Marka: " + marka + "\n" +
+                "Numer rejestracijny: " + numerRejestracijny + "\n" +
+                "Objetosc: " + objetosc;
+    }
 }

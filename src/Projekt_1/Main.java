@@ -302,7 +302,7 @@ public class Main {
                         dodanieTransportu(account);
                         break;
                     case 3:
-                        dodaniePrzedmiotu(account);
+                        // dodaniePrzedmiotu(account);
                         break;
                     case 4:
                         wszystkieTransportyOsoby(account);
@@ -326,30 +326,30 @@ public class Main {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Wprowadz numer rejestracijny transportu!");
-            String numerTransportu = sc.nextLine();
-            int idTransportTab = 0;
+            String numer = sc.nextLine();
+            int idTransport = 0;
             boolean sprawdzMiejsce = false;
             boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if ((numerTransportu == account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
+                if (numer.equals(account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
                     System.out.println("Transport jest znaleziony!");
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
                     System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
                     spawdzTransport = true;
-                    idTransportTab = i;
+                    idTransport = i;
                     break;
                 }
             }
             if (spawdzTransport == false) {
                 throw new AbsenceOsobaTransportException();
             }
-            if(spawdzTransport == true) {
+            if (spawdzTransport == true) {
                 for (int i = 0; i < account.parkingOsobaList.size(); i++) {
                     System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
-                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransportTab).objetosc) {  // spawdzTransportu == true && (
-                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransportTab));
-                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransportTab).objetosc;
-                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransportTab).objetosc;
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransport).objetosc) {  // spawdzTransportu == true && (
+                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransport));
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransport).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransport).objetosc;
                         System.out.println("Transport dodany do parkingowego miejsca");
                         sprawdzMiejsce = true;
                         break;
@@ -363,14 +363,14 @@ public class Main {
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             dodanieTransportu(account);
-        } catch(AbsenceOsobaTransportException | NotEnoughSpaceParkingException e) {
+        } catch (AbsenceOsobaTransportException | NotEnoughSpaceParkingException e) {
             System.out.println(e.toString());
             dodanieTransportu(account);
         }
     }
 
 
-    public static void dodaniePrzedmiotu(Osoba account) throws AbsenceOsobaTransportException {
+    public static void dodaniePrzedmiotu(Osoba account) {
         System.out.println("Wpisz numer indefikacyjny przedmiotu: ");
         Scanner sc = new Scanner(System.in);
         int numerIndyfikacyjnyPrzedmiotu = sc.nextInt();
@@ -384,7 +384,6 @@ public class Main {
 //                break;
 //            }
             if (sprawzdPrzedmiot = false) {
-                throw new AbsenceOsobaTransportException();
             }
 
         }
