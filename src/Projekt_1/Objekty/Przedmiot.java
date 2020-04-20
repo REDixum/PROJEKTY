@@ -8,4 +8,10 @@ public class Przedmiot extends Objekt {
         super(szerokosc, dlugosc, wysokosc);
         this.nazwa = nazwa;
     }
+
+    public String toString() {
+      return  "Nazwa: " + nazwa + "\n" +
+              "Objetosc: " + objetosc + "\n" +
+              "Numer identyfikacyjny: " + numerIndefikacyjnyPrzedmiotu + "\n";
+    }
 }
