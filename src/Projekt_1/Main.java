@@ -42,7 +42,7 @@ public class Main {
         listNajemca.add(osobaList.get(1));
         listNajemca.add(osobaList.get(4));
         listNajemca.add(osobaList.get(6));
-
+        //
         //------------------ BLOCKI ---------------------------
         Blok B1OS1 = new Blok(45, listNajemca, osobaListBlock1, 20);
         Blok B2OS1 = new Blok(65, listNajemca, osobaListBlock2, 15);
