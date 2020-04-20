@@ -63,12 +63,21 @@ public class Main {
             mieszkanieList.add(new Mieszkanie(134.98)); // 111 - 189
         }
         osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));//в помещениях не пишется что они наемцы
-        osobaList.get(3).mieszkanieList.add(mieszkanieList.get(74));//mieszka z najemcej
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(45));
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(64));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(74));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(86));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(97));
+
+        osobaList.get(3).mieszkanieList.add(mieszkanieList.get(74)); // mieszka z najemcej
+
+        mieszkanieList.get(32).najemca = osobaList.get(1);
+        mieszkanieList.get(74).najemca = osobaList.get(3);
+        mieszkanieList.get(45).najemca = osobaList.get(4);
+        mieszkanieList.get(64).najemca = osobaList.get(4);
+        mieszkanieList.get(74).najemca = osobaList.get(6);
+        mieszkanieList.get(86).najemca = osobaList.get(6);
+        mieszkanieList.get(97).najemca = osobaList.get(6);
         //------------------- PARKING --------------------------
         List<Parking> parkingList = new ArrayList<>();
         for (int i = 0; i < B1OS1.iloscParkingMiejsc; i++) { // 0 - 20
