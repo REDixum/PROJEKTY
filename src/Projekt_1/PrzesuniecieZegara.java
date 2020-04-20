@@ -1,7 +1,10 @@
 package Projekt_1;
 
-public class PrzesuniecieZegara {
-    public void przesuniecieZegara() {
+import java.util.TimerTask;
+
+public class PrzesuniecieZegara  extends TimerTask {
+    @Override
+    public void run() {
         Zegar.data = Zegar.data.plusDays(1);
     }
 }

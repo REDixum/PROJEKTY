@@ -10,6 +10,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         // -------------------   OSOBY  -----------------------
+        new Timer().schedule(new PrzesuniecieZegara(), 0 , 5000);
         List<Osoba> osobaList = new ArrayList<>();
         osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
         osobaList.add(new Osoba("Maks", "Semczenko", 7823, "ul.Ukrainki", LocalDate.parse("1879-05-18"), true));  // najemca
@@ -166,7 +167,8 @@ public class Main {
                     case 9:
                         break;
                     case 10:
-                        Zegar.zegar();
+                        System.out.println(Zegar.data);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                 }
             } else {
