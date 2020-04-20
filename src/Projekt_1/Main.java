@@ -291,6 +291,7 @@ public class Main {
     public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
+            System.out.println("Wprowadz punkt mieniu: ");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             if (idMeniu <= 6 && idMeniu >= 1) {
@@ -302,7 +303,7 @@ public class Main {
                         dodanieTransportu(account);
                         break;
                     case 3:
-                        // dodaniePrzedmiotu(account);
+                        dodaniePrzedmiotu(account);
                         break;
                     case 4:
                         wszystkieTransportyOsoby(account);
