@@ -361,7 +361,7 @@ public class Main {
                         account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransport).objetosc;
                         account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransport).objetosc;
                         System.out.println("Transport dodany do parkingowego miejsca");
-                        sprawdzMiejsce = true;
+                        sprawdzMiejsce = true; //
                         break;
                     }
                 }
