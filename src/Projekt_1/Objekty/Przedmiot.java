@@ -1,19 +1,18 @@
 package Projekt_1.Objekty;
 
 public class Przedmiot extends Objekt {
-    private static int indeks = 0;
     public String nazwa;
-    public int numerIndefikacyjnyPrzedmiotu;
 
-    public Przedmiot(String nazwa, double szerokosc, double dlugosc, double wysokosc) {
-        super(szerokosc, dlugosc, wysokosc);
+    public Przedmiot(int numerIndefikacyjnyObjektu, String nazwa, double szerokosc, double dlugosc, double wysokosc) {
+        super(nazwa,numerIndefikacyjnyObjektu, szerokosc, dlugosc, wysokosc);
         this.nazwa = nazwa;
-        numerIndefikacyjnyPrzedmiotu = indeks++;
+        this.numerIndefikacyjnyObjektu =numerIndefikacyjnyObjektu;
+
     }
 
     public String toString() {
-      return  "Nazwa: " + nazwa + "\n" +
-              "Objetosc: " + objetosc + "\n" +
-              "Numer identyfikacyjny: " + numerIndefikacyjnyPrzedmiotu + "\n";
+        return "Nazwa: " + nazwa + "\n" +
+                "Objetosc: " + objetosc + "\n" +
+                "Numer indefikacyjny: " + numerIndefikacyjnyObjektu + "\n";
     }
 }

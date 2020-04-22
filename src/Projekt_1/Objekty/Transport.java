@@ -9,14 +9,14 @@ public class Transport extends Objekt {
     public int iloscMiejsc;
     public String numerRejestracijny;
 
-    public Transport(double szerokosc, double dlugosc, double wysokosc, String marka, int pojemnoscSilnika, String typ, String typSilnika, String kolor, int iloscMiejsc, String numerRejestracijny) {
-        super(szerokosc, dlugosc, wysokosc);
-        this.marka = marka;
+    public Transport(String nazwa, int numerIndefikacyjnyObjektu, double szerokosc, double dlugosc, double wysokosc,  int pojemnoscSilnika, String typ, String typSilnika, String kolor, int iloscMiejsc, String numerRejestracijny) {
+        super(nazwa, numerIndefikacyjnyObjektu, szerokosc, dlugosc, wysokosc);
         this.pojemnoscSilnika = pojemnoscSilnika;
         this.typ = typ;
         this.typSilnika = typSilnika;
         this.kolor = kolor;
         this.iloscMiejsc = iloscMiejsc;
         this.numerRejestracijny = numerRejestracijny;
+        this.numerIndefikacyjnyObjektu = numerIndefikacyjnyObjektu;
     }
 }
