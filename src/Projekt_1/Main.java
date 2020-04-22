@@ -466,11 +466,11 @@ public class Main {
 
     public static void case8(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
-            System.out.println("1. Wyjscie \n2. Wyjac pojazd z parkingowego miejsca \n3. Wyjac przedmiot z parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
+            System.out.println("1. Wyjscie \n2. Wyjac pojazd z parkingowego miejsca \n3. Wyjac przedmiot z parkingowego miejsca\n4. Zobaczyc swoje parkingowe miejsca i ich transporty");
             System.out.println("Wprowadz punkt mieniu: ");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
-            if (idMeniu <= 6 && idMeniu >= 1) {
+            if (idMeniu <= 4 && idMeniu >= 1) {
                 switch (idMeniu) {
                     case 1:
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -482,12 +482,6 @@ public class Main {
                         wyjeciePrzedmiotu(account);
                         break;
                     case 4:
-                        wszystkieTransportyOsoby(account);
-                        break;
-                    case 5:
-                        wszystkiePrzedmiotyOsoby(account);
-                        break;
-                    case 6:
                         wywolanieParkingu(account);
                         break;
                 }
@@ -522,11 +516,13 @@ public class Main {
             if (spawdzTransport == true) {
                 for (int i = 0; i < account.parkingOsobaList.size(); i++) {
                     account.parkingOsobaList.get(i).transportList.remove(account.transportOsobaList.get(i));
-                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.transportOsobaList.get(i).objetosc;
-                    account.parkingOsobaList.get(i).zajenteMiejsce -= account.transportOsobaList.get(i).objetosc;
-                    System.out.println("Transport jest wyjety z parkingowego miejsca.");
-                    sprawdzMiejsce = true;
-                    break;
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking + account.transportOsobaList.get(i).objetosc < account.parkingOsobaList.get(i).objetosc) {
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.transportOsobaList.get(i).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce -= account.transportOsobaList.get(i).objetosc;
+                        System.out.println("Transport jest wyjety z parkingowego miejsca.");
+                        sprawdzMiejsce = true;
+                        break;
+                    }
                 }
             }
 
@@ -566,15 +562,15 @@ public class Main {
 
             if (spawdzPrzedmiot == true) {
                 for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
-                    account.parkingOsobaList.get(i).przedmiotList.remove(account.przedmiotOsobaList.get(i));
-                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.przedmiotOsobaList.get(i).objetosc;
-                    account.parkingOsobaList.get(i).zajenteMiejsce -= account.przedmiotOsobaList.get(i).objetosc;
-                    System.out.println("Przedmiot jest wyjety z parkingowego miejsca.");
-                    sprawdzMiejsce = true;
-                    break;
-
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking + account.transportOsobaList.get(i).objetosc < account.parkingOsobaList.get(i).objetosc) {
+                        account.parkingOsobaList.get(i).przedmiotList.remove(account.przedmiotOsobaList.get(i));
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.przedmiotOsobaList.get(i).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce -= account.przedmiotOsobaList.get(i).objetosc;
+                        System.out.println("Przedmiot jest wyjety z parkingowego miejsca.");
+                        sprawdzMiejsce = true;
+                        break;
+                    }
                 }
-
             }
             if (sprawdzMiejsce == false) {
                 throw new ParkingIsAlreadyEmpty();
