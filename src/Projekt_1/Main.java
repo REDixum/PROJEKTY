@@ -1,9 +1,6 @@
 package Projekt_1;
 
-import Projekt_1.Exceptions.AbsenceAppartmentException;
-import Projekt_1.Exceptions.AbsenceOsobaObjektException;
-import Projekt_1.Exceptions.AppartmentRentedException;
-import Projekt_1.Exceptions.NotEnoughSpaceParkingException;
+import Projekt_1.Exceptions.*;
 import Projekt_1.Objekty.*;
 
 import java.time.LocalDate;
@@ -149,7 +146,7 @@ public class Main {
     public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             System.out.println("Meniu:");
-            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów pamiętając, aby nie przepełnić pomieszczenia.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n10.Zobaczyс aktualną datę. ");
+            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n10.Zobaczyс aktualną datę. ");
             System.out.println("Wprowadz numer punktu meniu:");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
@@ -194,7 +191,10 @@ public class Main {
                         case7(account7, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                     case 8:
-
+                        Osoba account8 = wprowadzeniePesel(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                        System.out.println(account8);
+                        case8(account8, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 9:
                         break;
@@ -381,7 +381,7 @@ public class Main {
                         account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(i));
                         account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(i).objetosc;
                         account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(i).objetosc;
-                        System.out.println("Transport dodany do parkingowego miejsca");
+                        System.out.println("Transport jest dodany do parkingowego miejsca.");
                         sprawdzMiejsce = true;
                         break;
                     }
@@ -428,7 +428,7 @@ public class Main {
                         account.parkingOsobaList.get(i).przedmiotList.add(account.przedmiotOsobaList.get(i));
                         account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.przedmiotOsobaList.get(i).objetosc;
                         account.parkingOsobaList.get(i).zajenteMiejsce += account.przedmiotOsobaList.get(i).objetosc;
-                        System.out.println("Przedmiot jest dodany do parkingowego miejsca");
+                        System.out.println("Przedmiot jest dodany do parkingowego miejsca.");
                         sprawdzMiejsce = true;
                         break;
                     }
@@ -463,7 +463,133 @@ public class Main {
             System.out.println(account.parkingOsobaList.get(i));
         }
     }
+
+    public static void case8(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
+        try {
+            System.out.println("1. Wyjscie \n2. Wyjac pojazd z parkingowego miejsca \n3. Wyjac przedmiot z parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
+            System.out.println("Wprowadz punkt mieniu: ");
+            Scanner sc = new Scanner(System.in);
+            int idMeniu = sc.nextInt();
+            if (idMeniu <= 6 && idMeniu >= 1) {
+                switch (idMeniu) {
+                    case 1:
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                        break;
+                    case 2:
+                        wyjecieTransportu(account);
+                        break;
+                    case 3:
+                        wyjeciePrzedmiotu(account);
+                        break;
+                    case 4:
+                        wszystkieTransportyOsoby(account);
+                        break;
+                    case 5:
+                        wszystkiePrzedmiotyOsoby(account);
+                        break;
+                    case 6:
+                        wywolanieParkingu(account);
+                        break;
+                }
+            } else {
+                throw new InputMismatchException();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Exception: Bledne dane!");
+        }
+    }
+
+    public static void wyjecieTransportu(Osoba account) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wprowadz numer indefikacyjny transportu!");
+            int numer = sc.nextInt();
+            boolean sprawdzMiejsce = false;
+            boolean spawdzTransport = false;
+            for (int i = 0; i < account.transportOsobaList.size(); i++) {
+                if (numer == account.transportOsobaList.get(i).numerIndefikacyjnyObjektu) {
+                    System.out.println("Transport jest znaleziony!");
+                    System.out.println("Marka: " + account.transportOsobaList.get(i).nazwa);
+                    System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
+                    System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
+                    spawdzTransport = true;
+                    break;
+                }
+            }
+            if (spawdzTransport == false) {
+                throw new AbsenceOsobaObjektException();
+            }
+            if (spawdzTransport == true) {
+                for (int i = 0; i < account.parkingOsobaList.size(); i++) {
+                    account.parkingOsobaList.get(i).transportList.remove(account.transportOsobaList.get(i));
+                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.transportOsobaList.get(i).objetosc;
+                    account.parkingOsobaList.get(i).zajenteMiejsce -= account.transportOsobaList.get(i).objetosc;
+                    System.out.println("Transport jest wyjety z parkingowego miejsca.");
+                    sprawdzMiejsce = true;
+                    break;
+                }
+            }
+
+            if (sprawdzMiejsce == false) {
+                throw new ParkingIsAlreadyEmpty();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Exception: Bledne dane!");
+            dodanieTransportu(account);
+        } catch (AbsenceOsobaObjektException | ParkingIsAlreadyEmpty e) {
+            System.out.println(e.toString());
+            dodanieTransportu(account);
+        }
+
+    }
+
+    public static void wyjeciePrzedmiotu(Osoba account) {
+        try {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wpisz numer identyfikacyjny przedmiotu: ");
+            int numer = sc.nextInt();
+            boolean sprawdzMiejsce = false;
+            boolean spawdzPrzedmiot = false;
+            for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
+                if (numer == account.przedmiotOsobaList.get(i).numerIndefikacyjnyObjektu) {
+                    System.out.println("Przedmiot jest znalieziony!");
+                    System.out.println("Nazwa przedmiotu: " + account.przedmiotOsobaList.get(i).nazwa);
+                    System.out.println("Objetosc przedmiotu: " + account.przedmiotOsobaList.get(i).objetosc);
+                    spawdzPrzedmiot = true;
+                    break;
+                }
+            }
+
+            if (spawdzPrzedmiot == false) {
+                throw new AbsenceOsobaObjektException();
+            }
+
+            if (spawdzPrzedmiot == true) {
+                for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
+                    account.parkingOsobaList.get(i).przedmiotList.remove(account.przedmiotOsobaList.get(i));
+                    account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking + account.przedmiotOsobaList.get(i).objetosc;
+                    account.parkingOsobaList.get(i).zajenteMiejsce -= account.przedmiotOsobaList.get(i).objetosc;
+                    System.out.println("Przedmiot jest wyjety z parkingowego miejsca.");
+                    sprawdzMiejsce = true;
+                    break;
+
+                }
+
+            }
+            if (sprawdzMiejsce == false) {
+                throw new ParkingIsAlreadyEmpty();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Exception: Bledne dane!");
+            dodaniePrzedmiotu(account);
+        } catch (AbsenceOsobaObjektException | ParkingIsAlreadyEmpty e) {
+            System.out.println(e.toString());
+            dodaniePrzedmiotu(account);
+        }
+
+    }
 }
+
 
 
 
