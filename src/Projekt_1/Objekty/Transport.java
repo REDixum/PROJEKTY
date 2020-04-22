@@ -1,7 +1,6 @@
 package Projekt_1.Objekty;
 
 public class Transport extends Objekt {
-    public String marka;
     public int pojemnoscSilnika;
     public String typ;
     public String typSilnika;
@@ -17,6 +16,5 @@ public class Transport extends Objekt {
         this.kolor = kolor;
         this.iloscMiejsc = iloscMiejsc;
         this.numerRejestracijny = numerRejestracijny;
-        this.numerIndefikacyjnyObjektu = numerIndefikacyjnyObjektu;
     }
 }

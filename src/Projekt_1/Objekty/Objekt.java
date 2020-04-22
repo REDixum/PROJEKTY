@@ -6,6 +6,7 @@ public class Objekt {
     public String nazwa;
 
     public Objekt(String nazwa, int numerIndefikacyjnyObjektu , double szerokosc, double dlugosc, double wysokosc){
+        this.numerIndefikacyjnyObjektu = numerIndefikacyjnyObjektu;
         this.objetosc = szerokosc * dlugosc * wysokosc ;//w metrach
         this.nazwa = nazwa;
     }

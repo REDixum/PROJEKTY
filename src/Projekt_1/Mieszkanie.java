@@ -16,7 +16,7 @@ public class Mieszkanie {
     public Mieszkanie(double objetosc) {
         this.objetosc = objetosc;
         listOsobMieszkanie = new ArrayList<>();
-        this.numerIndyfikacyjny = ++indeks;
+        this.numerIndyfikacyjny = indeks++;
     }
 
     public String toString() {
