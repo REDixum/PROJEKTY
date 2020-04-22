@@ -2,6 +2,7 @@ package Projekt_1;
 
 import Projekt_1.Objekty.Objekt;
 import Projekt_1.Objekty.Transport;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,9 @@ public class Parking {
         this.numerIndyfikacyjny = ++indeks;
     }
 
-    public String toString(){
-        return  "ID: " + this.numerIndyfikacyjny + "\n" +
+    public String toString() {
+        return "\n Parking: " + "\n" +
+                "ID: " + this.numerIndyfikacyjny + "\n" +
                 "Objetosc: " + this.objetosc + "\n" +
                 "Wolne miejsce: " + this.wolneMiejsceParking + "\n" +
                 "Zajente miejsce " + this.zajenteMiejsce + "\n" +

@@ -236,6 +236,9 @@ public class Main {
         for (int i = 0; i < account.mieszkanieList.size(); i++) {
             System.out.println(account.mieszkanieList.get(i));
         }
+        for (int i=0; i<account.parkingOsobaList.size();i++){
+            System.out.println(account.parkingOsobaList.get(i));
+        }
     }
 
     public static void case4(List<Mieszkanie> mieszkanieList) {
@@ -335,18 +338,18 @@ public class Main {
     public static void dodanieTransportu(Osoba account) {
         try {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Wprowadz numer rejestracijny transportu!");
-            String numer = sc.nextLine();
-            int idTransport = 0;
+            System.out.println("Wprowadz numer indefikacyjny transportu!");
+            int numer = sc.nextInt();
             boolean sprawdzMiejsce = false;
             boolean spawdzTransport = false;
             for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                if (numer.equals(account.transportOsobaList.get(i).numerRejestracijny)) {  // NG78IR
+                if (numer.equals(account.transportOsobaList.get(i).numerRejestracijny)) {//не помню как там равно было
+
                     System.out.println("Transport jest znaleziony!");
+                    System.out.println("Marka: " + account.transportOsobaList.get(i).marka);
                     System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
                     System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
                     spawdzTransport = true;
-                    idTransport = i;
                     break;
                 }
             }
@@ -356,12 +359,12 @@ public class Main {
             if (spawdzTransport == true) {
                 for (int i = 0; i < account.parkingOsobaList.size(); i++) {
                     System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
-                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(idTransport).objetosc) {  // spawdzTransportu == true && (
-                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(idTransport));
-                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(idTransport).objetosc;
-                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(idTransport).objetosc;
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(i).objetosc) {
+                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(i));
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(i).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(i).objetosc;
                         System.out.println("Transport dodany do parkingowego miejsca");
-                        sprawdzMiejsce = true; //
+                        sprawdzMiejsce = true;
                         break;
                     }
                 }
@@ -379,26 +382,12 @@ public class Main {
         }
     }
 
-
     public static void dodaniePrzedmiotu(Osoba account) {
-        System.out.println("Wpisz numer indefikacyjny przedmiotu: ");
-        Scanner sc = new Scanner(System.in);
-        int numerIndyfikacyjnyPrzedmiotu = sc.nextInt();
-        boolean sprawzdPrzedmiot = false;
-        boolean sprawzdMiejsce = false;
-        for (int i = 0; i < account.przedmiotOsobaList.size(); i++) {
-//            if ((numerIndyfikacyjnyPrzedmiotu == (account.przedmiotOsobaList.get(i)))) {
-//                System.out.println("Przedmiot jest znalieziony!");
-//                System.out.println("Objetosc przedmiotu: " + account.przedmiotOsobaList.get(i).objetosc);
-//                sprawzdPrzedmiot = true;
-//                break;
-//            }
-            if (sprawzdPrzedmiot = false) {
-            }
 
-        }
+
 
     }
+
 
     public static void wszystkieTransportyOsoby(Osoba account) {
         System.out.println(account.transportOsobaList);
