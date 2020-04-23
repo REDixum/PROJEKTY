@@ -295,7 +295,7 @@ public class Main {
             if (sprawdzenieMieszkania && mieszkanieList.get(numerMieszkanie).najemca != null) {
                 throw new AppartmentRentedException();
             }
-            if (sprawdzanieNajemcy == true && sprawdzenieMieszkania == true) {
+            if (sprawdzanieNajemcy && sprawdzenieMieszkania) {
                 mieszkanieList.get(numerMieszkanie).najemca = account;
                 account.najemca = true;
                 account.mieszkanieList.add(mieszkanieList.get(numerMieszkanie));
@@ -614,11 +614,11 @@ public class Main {
     public static void case11(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca){
         try{
             if (account.najemca) {
-                System.out.println("1. Wyjscie \n2. Dodac mieszkanca \n3. Wyjac mieszkanca\n4. Mieszkancy w mieszkanie\n5. Zobaczyc liste wynajetych mieszkan");
+                System.out.println("1. Wyjscie \n2. Dodac mieszkanca \n3. Wyjac mieszkanca\n\n4. Zobaczyc liste wynajetych mieszkan");
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
-                if (idMeniu <= 5 && idMeniu >= 1) {
+                if (idMeniu <= 4 && idMeniu >= 1) {
                    switch (idMeniu) {
                        case 1: wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                            break;
@@ -627,14 +627,10 @@ public class Main {
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 3:
-                        wyjacMieszkanca();
+                        wyjacMieszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 4:
-                        wyswietlMieszkancow();
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        break;
-                    case 5:
                         wyswietlMieszkanie(account);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
@@ -697,11 +693,48 @@ public class Main {
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
     }
-    public static void wyjacMieszkanca(){
+    public static void wyjacMieszkanca(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca){
+        try {
+            Scanner sc = new Scanner(System.in);
+            boolean sprawdzPesel = false;
+            boolean sprawdzMieszkanie = false;
+            int numerOsoby = 0;
+            int idMieszkania = 0;
 
-    }
-    public static void wyswietlMieszkancow(){
-
+            System.out.println("Wprowadz numer mieszkania z ktorego chcesz wyjac mieszkanca: ");
+            int numerMieszkania = sc.nextInt();
+            for(Mieszkanie mieszkanie : account.mieszkanieList){
+                if(mieszkanie.numerIndyfikacyjny == numerMieszkania){
+                    sprawdzMieszkanie = true;
+                    idMieszkania = mieszkanieList.indexOf(mieszkanie);
+                    break;
+                }
+            }
+            if(!sprawdzMieszkanie){
+                System.out.println("Exception: Takiego mieszkania najemec nie wynajmuje");
+                wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+            }
+            System.out.println("Wprowadz PESEL osoby: ");
+            int peselOsoby = sc.nextInt();
+            for(Osoba osoba : mieszkanieList.get(idMieszkania).listOsobMieszkanie){
+                if(osoba.pesel == peselOsoby){
+                    sprawdzPesel = true;
+                    numerOsoby = osobaList.indexOf(osoba);
+                    break;
+                }
+            }
+            if(!sprawdzPesel){
+                System.out.println("Exception: Takiego czlowieka nie ma w bazie dannych!");
+                wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+            }
+            if(sprawdzPesel && sprawdzMieszkanie){
+                System.out.println("Osoba jest wyjacona z listy mieszkancow!");
+                mieszkanieList.get(idMieszkania).listOsobMieszkanie.remove(numerOsoby);
+            }
+        } catch(InputMismatchException e){
+            System.out.println("Exception: Bledne dane!");
+            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+        }
     }
     public static void wyswietlMieszkanie(Osoba account){
         System.out.println(account.mieszkanieList);
