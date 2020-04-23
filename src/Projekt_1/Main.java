@@ -151,7 +151,6 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             System.out.println();
-            if (idMeniu <= 11 && idMeniu > 0) {
                 switch (idMeniu) {
                     case 1:
                         System.out.println("Program jest zakonczony.");
@@ -200,7 +199,7 @@ public class Main {
                     case 9:
                         break;
                     case 10:
-                        System.out.println(Zegar.data);
+                        System.out.println(PrzesuniecieZegara.data);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 11:
@@ -209,10 +208,9 @@ public class Main {
                         case11(account11, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
+                    default:
+                        throw new InputMismatchException();
                 }
-            } else {
-                throw new InputMismatchException();
-            }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -340,7 +338,6 @@ public class Main {
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
-                if (idMeniu <= 6 && idMeniu >= 1) {
                     switch (idMeniu) {
                         case 1:
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -365,11 +362,10 @@ public class Main {
                             wywolanieParkingu(account);
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                             break;
+                        default:
+                            throw new InputMismatchException();
                     }
                 } else {
-                    throw new InputMismatchException();
-                }
-            } else {
                 System.out.println("Exception: Osoba nie jest najemca");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
@@ -496,7 +492,6 @@ public class Main {
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
-                if (idMeniu <= 4 && idMeniu >= 1) {
                     switch (idMeniu) {
                         case 1:
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -513,9 +508,8 @@ public class Main {
                             wywolanieParkingu(account);
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                             break;
-                    }
-                } else {
-                    throw new InputMismatchException();
+                        default:
+                            throw new InputMismatchException();
                 }
             } else {
                 System.out.println("Exception: Osoba nie jest najemca");
@@ -626,26 +620,25 @@ public class Main {
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
-                if (idMeniu <= 4 && idMeniu >= 1) {
                    switch (idMeniu) {
-                       case 1: wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                       case 1:
+                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                            break;
-                    case 2:
-                        dodawanieMeszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        break;
-                    case 3:
-                        wyjacMieszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        break;
-                    case 4:
-                        wyswietlMieszkanie(account);
-                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                        break;
-                    }
-                } else {
-                   throw new InputMismatchException();
-                }
+                       case 2:
+                           dodawanieMeszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                           break;
+                       case 3:
+                           wyjacMieszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                           break;
+                       case 4:
+                           wyswietlMieszkanie(account);
+                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                           break;
+                       default:
+                           throw new InputMismatchException();
+                   }
         } else {
             System.out.println("Exception: Osoba nie jest najemca");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
