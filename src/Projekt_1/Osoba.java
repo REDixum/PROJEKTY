@@ -10,7 +10,7 @@ import java.util.List;
 public class Osoba implements Comparable<Osoba> {
     private static int indeks = 0;
     public int id = 1;
-    public String imie;
+    public  String imie;
     public String nazwisko;
     public int pesel;
     public String adres;
