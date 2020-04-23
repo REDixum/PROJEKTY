@@ -8,6 +8,7 @@ public class PrzesuniecieZegara  extends TimerTask {
     @Override
     public void run() {
         data = data.plusDays(1);
+        System.out.println("-------------- Date: " + data.toString());
     }
     public static LocalDate getCurrentDate() {
         return data;
