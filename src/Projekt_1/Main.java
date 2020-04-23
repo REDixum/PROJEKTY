@@ -3,11 +3,15 @@ package Projekt_1;
 import Projekt_1.Exceptions.*;
 import Projekt_1.Objekty.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Main {
+import static Projekt_1.PrzesuniecieZegara.getCurrentDate;
 
+public class Main {
     public static void main(String[] args) {
         new Timer().schedule(new PrzesuniecieZegara(), 0, 5000);
         // -------------------   OSOBY  -----------------------
@@ -140,7 +144,7 @@ public class Main {
         osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
         //-------------------------------------------------------
         meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-    }
+        };
 
     // ------------------ MENU -----------------------------
     public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
@@ -197,6 +201,7 @@ public class Main {
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 9:
+                        case9(osobaList);
                         break;
                     case 10:
                         System.out.println(PrzesuniecieZegara.data);
@@ -306,6 +311,8 @@ public class Main {
                 account.najemca = true;
                 account.mieszkanieList.add(mieszkanieList.get(numerMieszkanie));
                 mieszkanieList.get(numerMieszkanie).listOsobMieszkanie.add(account);
+                mieszkanieList.get(numerMieszkanie).dataRozpoczeczia = getCurrentDate();
+                mieszkanieList.get(numerMieszkanie).dataZakonczenia = getCurrentDate().plusDays(30);
                 System.out.println("Pan/Pani wynajmowal(a) mieszkanie na 1 miesiac");
             }
         } catch (AbsenceAppartmentException | AppartmentRentedException e) {
@@ -484,6 +491,28 @@ public class Main {
             System.out.println(account.parkingOsobaList.get(i));
         }
     }
+
+    public static void case9(List<Osoba> osobaList) {
+        StringBuilder text = new StringBuilder();
+        boolean raport = false;
+        for (int i = 0; i < osobaList.size(); i++) {
+            text.append("\n").append("\n").append("~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  ").append(osobaList.get(i).imie).append(" ").append(osobaList.get(i).nazwisko).append(" ").append("~~~~~~").append("\n").append("\n").append("\n").append("* DATA URODZENIA: ").append(osobaList.get(i).dataUrodzenia).append("\n").append("\n").append("* ID: ").append(osobaList.get(i).id).append("\n").append("\n").append("* ADRES ZAMIESZKANIA: ").append(osobaList.get(i).adres).append("\n").append("\n").append("* INFORMACJA O POMIESZCZENIACH: ").append("\n").append("\n").append(osobaList.get(i).mieszkanieList).append("\n").append(osobaList.get(i).parkingOsobaList).append("\n").append("\n").append("* INFORMACJA O OBJEKTACH: ").append("\n").append("\n").append(osobaList.get(i).transportOsobaList).append("\n").append(osobaList.get(i).przedmiotOsobaList);
+            try {
+                Files.write(Paths.get("Report.txt"), text.toString().getBytes());
+                raport = true;
+
+            } catch (IOException e) {
+            }
+
+        }
+        if (raport == true) {
+            System.out.println("Raport jest zapisany do pliku Report.txt!");
+        } else {
+            System.out.println("Exception:Pomylka podczas zapisywania pliku!");
+        }
+    }
+
+
 
     public static void case8(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {

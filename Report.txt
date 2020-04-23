@@ -1,0 +1,329 @@
+
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Jesus Dudak ~~~~~~
+
+
+* DATA URODZENIA: 1999-11-23
+
+* ID: 1
+
+* ADRES ZAMIESZKANIA: ul.Farkor
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Horizon
+Numer rejstracyjny: CH54IE
+Objetosc: 406.51875809999996
+]
+[Nazwa: Sprzet
+Objetosc: 63.0
+Numer indefikacyjny: 7654
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Maks Semczenko ~~~~~~
+
+
+* DATA URODZENIA: 1879-05-18
+
+* ID: 2
+
+* ADRES ZAMIESZKANIA: ul.Ukrainki
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[
+ Mieszkanie: 
+Najemca: Maks Semczenko
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 32
+]
+[
+ Parking: 
+ID: 13
+Objetosc: 20.0
+Wolne miejsce: 20.0
+Zajente miejsce 0.0
+Transporty: []
+Przedmioty: []
+]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Harley
+Numer rejstracyjny: TY43GH
+Objetosc: 2.125
+]
+[Nazwa: Namiot kempingowy
+Objetosc: 29.96
+Numer indefikacyjny: 1172
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Varya Baranczykawa ~~~~~~
+
+
+* DATA URODZENIA: 2000-03-20
+
+* ID: 3
+
+* ADRES ZAMIESZKANIA: ul.Timoshenko
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Hyundai
+Numer rejstracyjny: SPI456TM
+Objetosc: 4.264176000000001
+]
+[Nazwa: Przedmioty z poprzedniego 
+Objetosc: 215.6
+Numer indefikacyjny: 4444
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Lesha Vasczilo ~~~~~~
+
+
+* DATA URODZENIA: 2002-09-06
+
+* ID: 4
+
+* ADRES ZAMIESZKANIA: ul.Pobiedzitieliej
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[
+ Mieszkanie: 
+Najemca: Wadim Pupkin
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 74
+]
+[
+ Parking: 
+ID: 35
+Objetosc: 30.0
+Wolne miejsce: 30.0
+Zajente miejsce 0.0
+Transporty: []
+Przedmioty: []
+]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Mercedes
+Numer rejstracyjny: AV21JG
+Objetosc: 25.132877999999998
+]
+[Nazwa: Stary fortepian
+Objetosc: 27.383999999999997
+Numer indefikacyjny: 2332
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Nikita Demczenko ~~~~~~
+
+
+* DATA URODZENIA: 2002-03-09
+
+* ID: 5
+
+* ADRES ZAMIESZKANIA: ul.Golobiewa
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[
+ Mieszkanie: 
+Najemca: Nikita Demczenko
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 45
+, 
+ Mieszkanie: 
+Najemca: Nikita Demczenko
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 64
+]
+[
+ Parking: 
+ID: 25
+Objetosc: 30.0
+Wolne miejsce: 30.0
+Zajente miejsce 0.0
+Transporty: []
+Przedmioty: []
+]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Ferrari
+Numer rejstracyjny: AM320NM
+Objetosc: 2.7977039999999995
+, Marka: Lilos
+Numer rejstracyjny: IO67FG
+Objetosc: 2043.0709650000001
+]
+[Nazwa: Rowery
+Objetosc: 16.24
+Numer indefikacyjny: 9800
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Maciej Noskow ~~~~~~
+
+
+* DATA URODZENIA: 1967-12-10
+
+* ID: 6
+
+* ADRES ZAMIESZKANIA: ul.Tankistow
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[]
+[Nazwa: Alkohol
+Objetosc: 86.8
+Numer indefikacyjny: 9485
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Wadim Pupkin ~~~~~~
+
+
+* DATA URODZENIA: 2007-11-06
+
+* ID: 7
+
+* ADRES ZAMIESZKANIA: ul.Lorzkina
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[
+ Mieszkanie: 
+Najemca: Wadim Pupkin
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 74
+, 
+ Mieszkanie: 
+Najemca: Wadim Pupkin
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 86
+, 
+ Mieszkanie: 
+Najemca: Wadim Pupkin
+Data rozpoczecia: null
+Data zakonczenia: null
+Mieszkancy: []
+Numer indyfikacyjny: 97
+]
+[
+ Parking: 
+ID: 34
+Objetosc: 30.0
+Wolne miejsce: 30.0
+Zajente miejsce 0.0
+Transporty: []
+Przedmioty: []
+]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: BWM
+Numer rejstracyjny: NG78IR
+Objetosc: 7.604300000000001
+]
+[Nazwa: Opony
+Objetosc: 0.7839999999999999
+Numer indefikacyjny: 7768
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Artem Klimowicz ~~~~~~
+
+
+* DATA URODZENIA: 1889-04-30
+
+* ID: 8
+
+* ADRES ZAMIESZKANIA: ul.Woronicza
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: BMW
+Numer rejstracyjny: JI67SX
+Objetosc: 19.979750000000003
+]
+[Nazwa: Rower
+Objetosc: 0.5980000000000001
+Numer indefikacyjny: 8576
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Lesha Kosteniewicz ~~~~~~
+
+
+* DATA URODZENIA: 2000-01-30
+
+* ID: 9
+
+* ADRES ZAMIESZKANIA: ul.Moloszenko
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[Marka: Honda
+Numer rejstracyjny: WAW123RK
+Objetosc: 460.0904
+]
+[Nazwa: Hulajnoga
+Objetosc: 0.5980000000000001
+Numer indefikacyjny: 2345
+]
+
+~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  Patryk Orlowski ~~~~~~
+
+
+* DATA URODZENIA: 1992-05-12
+
+* ID: 10
+
+* ADRES ZAMIESZKANIA: ul.Koszykowa
+
+* INFORMACJA O POMIESZCZENIACH: 
+
+[]
+[]
+
+* INFORMACJA O OBJEKTACH: 
+
+[]
+[Nazwa: Sprzet sportowy
+Objetosc: 95.19999999999999
+Numer indefikacyjny: 1234
+]
