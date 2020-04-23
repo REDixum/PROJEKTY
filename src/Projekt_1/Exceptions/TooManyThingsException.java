@@ -1,7 +1,7 @@
 package Projekt_1.Exceptions;
 
 public class TooManyThingsException extends Exception{
-    public TooManyThingsException(String message) {
-        super(message);
+    public String toString(){
+        return "Exception: Remove some old items to insert a new item";
     }
 }

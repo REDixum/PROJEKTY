@@ -279,6 +279,7 @@ public class Main {
             boolean sprawdzenieMieszkania = false;
             boolean sprawdzanieNajemcy = false;
             int numerMieszkanie = -1;
+            int ilosc = 0;
             System.out.println("Numer indyfikacyjny meszkania: ");
             Scanner sc = new Scanner(System.in);
             int numerIndyfikacyjny = sc.nextInt();
@@ -288,6 +289,13 @@ public class Main {
                     sprawdzanieNajemcy = true;
                     numerMieszkanie = i;
                 }
+            }
+            for(Mieszkanie mieszkanie : account.mieszkanieList){
+                ilosc++;
+            }
+            if(ilosc == 5){
+                System.out.println("Exception: Najemec moze wynajmowac tyle 5 mieszkan!");
+                wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
             if (!sprawdzenieMieszkania) {
                 throw new AbsenceAppartmentException();
@@ -406,12 +414,12 @@ public class Main {
                 }
 
                 if (!sprawdzMiejsce) {
-                    throw new NotEnoughSpaceParkingException();
+                    throw new TooManyThingsException();
                 }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-        } catch (AbsenceOsobaObjektException | NotEnoughSpaceParkingException e) {
+        } catch (AbsenceOsobaObjektException | TooManyThingsException e) {
             System.out.println(e.toString());
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
@@ -454,12 +462,12 @@ public class Main {
 
             }
             if (!sprawdzMiejsce) {
-                throw new NotEnoughSpaceParkingException();
+                throw new TooManyThingsException();
             }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-        } catch (AbsenceOsobaObjektException | NotEnoughSpaceParkingException e) {
+        } catch (AbsenceOsobaObjektException | TooManyThingsException e) {
             System.out.println(e.toString());
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
