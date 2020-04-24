@@ -9,12 +9,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
+import static Projekt_1.Zegar.getData;
 
 public class Main {
 
     public static void main(String[] args) {
-        new Timer().schedule(new Zegar(), 0, 5000);
-        Osoba.wywolanieWatkow();
+        new Timer().schedule(new PrzesuniecieZegaru(), 0, 5000);
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
         osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
@@ -243,7 +243,7 @@ public class Main {
     public static Osoba wprowadzeniePesel(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         int numer = -1;
         try {
-            System.out.println("Wprowadz PESEL:");
+            System.out.println("Wprowadz PESEL: ");
             Scanner sc = new Scanner(System.in);
             int wprPesel = sc.nextInt();
             for (int i = 0; i < osobaList.size(); i++) {

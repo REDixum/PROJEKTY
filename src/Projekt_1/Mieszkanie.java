@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mieszkanie {
-    private static int indeks = 0;
+    public static int indeks = 0;
     public static int numerIndyfikacyjny;
     List<Osoba> listOsobMieszkanie;
     LocalDate dataRozpoczeczia;

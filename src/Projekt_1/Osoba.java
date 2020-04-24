@@ -11,21 +11,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Osoba implements Comparable<Osoba> {
+public class Osoba {
     private static int indeks = 0;
-    public static int id = 1;
-    public static  String imie;
-    public static String nazwisko;
-    public static  int pesel;
+    public int id = 1;
+    public String imie;
+    public String nazwisko;
+    public int pesel;
     public String adres;
     public LocalDate dataUrodzenia;
-    public static boolean najemca = false;
-    public static List<Mieszkanie> mieszkanieList;
-    public static List<Parking> parkingOsobaList;
-    public static List<Transport> transportOsobaList;
-    public static List<Objekt> przedmiotOsobaList;
-    public static boolean oplataMieszkanie;
-    public static List<Mieszkanie> mieszkanieNaOplate;
+    public boolean najemca = false;
+    public List<Mieszkanie> mieszkanieList;
+    public List<Parking> parkingOsobaList;
+    public List<Transport> transportOsobaList;
+    public List<Objekt> przedmiotOsobaList;
+    public boolean oplataMieszkanie;
+    public List<Mieszkanie> mieszkanieNaOplate;
     public static List<File> listyONieplacie;
 
 
@@ -46,12 +46,10 @@ public class Osoba implements Comparable<Osoba> {
         }
 
         this.mieszkanieNaOplate = new ArrayList<>();
+        run.start();
+        run1.start();
     }
 
-    @Override
-    public int compareTo(Osoba o) {
-        return dataUrodzenia.compareTo(o.dataUrodzenia);
-    }
 
     public String toString() {
         return "Imie: " + imie + "\n" +
@@ -65,7 +63,7 @@ public class Osoba implements Comparable<Osoba> {
     }
 
 
-    static Thread run = new Thread(new Runnable() {
+    Thread run = new Thread(new Runnable() {
         @Override
         public void run() {
             while (true) {
@@ -79,7 +77,7 @@ public class Osoba implements Comparable<Osoba> {
         }
     });
 
-    static Thread run1 = new Thread(new Runnable() {
+    Thread run1 = new Thread(new Runnable() {
         @Override
         public void run() {
             while (true) {
@@ -99,7 +97,7 @@ public class Osoba implements Comparable<Osoba> {
                     int id = mieszkanieNaOplate.get(i).numerIndyfikacyjny;
                     mieszkanieList.get(id).dataZakonczenia.plusDays(30);
                     mieszkanieNaOplate.remove(i);
-                } else if (!oplataMieszkanie || mieszkanieNaOplate.get(i).dataZakonczenia.isBefore(Zegar.getData())) {
+                } else if (!oplataMieszkanie || mieszkanieNaOplate.get(i).dataZakonczenia.isBefore(Zegar.getCurrentDate())) {
                     eksmisja(parkingOsobaList, mieszkanieList, mieszkanieNaOplate);
                 }
             }
@@ -172,7 +170,7 @@ public class Osoba implements Comparable<Osoba> {
         }
     }
 
-    public  static void sprawdzenieOplaty(List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate) {
+    public static void sprawdzenieOplaty(List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate) {
         for (int i = 0; i < mieszkanieList.size(); i++) {
             for (int j = 0; j < mieszkanieNaOplate.size(); j++) {
                 if (mieszkanieNaOplate.get(j) == mieszkanieList.get(i)) {
@@ -180,8 +178,8 @@ public class Osoba implements Comparable<Osoba> {
                     if (mieszkanieList.get(i).dataZakonczenia.isBefore(Zegar.getCurrentDate())) {
                         mieszkanieNaOplate.add(mieszkanieList.get(i));
                         try {
-                            File list = new File("List_id_" + Osoba.id + "_Nr#"+ Mieszkanie.numerIndyfikacyjny + ".txt");
-                            Files.write(list.toPath(), Collections.singleton("Twoja oplataza mieszkanie Nr#" + Mieszkanie.numerIndyfikacyjny + " skonczylo sie!"));
+                            File list = new File("List_id_" + Osoba.indeks + "_Nr#" +Mieszkanie.indeks+ ".txt");
+                            Files.write(list.toPath(), Collections.singleton("Twoja oplataza mieszkanie Nr#" + Mieszkanie.indeks + " skonczylo sie!"));
                             Osoba.listyONieplacie.add(list);
                         } catch (IOException | NullPointerException e) {
                             e.printStackTrace();
@@ -191,29 +189,23 @@ public class Osoba implements Comparable<Osoba> {
             }
         }
     }
-    public static void wywolanieWatkow(){
-        run.start();
-        run1.start();
-    }
 
-    public File zapisywanieListow(Mieszkanie mieszkanie){
+    public File zapisywanieListow(Mieszkanie mieszkanie) {
         if (listyONieplacie.isEmpty())
             return null;
-        for (File listyONieplacie : listyONieplacie){
-            if (listyONieplacie.getName().split(" ")[1].equals(mieszkanie.numerIndyfikacyjny)){
+        for (File listyONieplacie : listyONieplacie) {
+            if (listyONieplacie.getName().split(" ")[1].equals(mieszkanie.numerIndyfikacyjny)) {
                 return listyONieplacie;
             }
         }
         return null;
     }
 
-    public void usuniecieListow(Mieszkanie mieszkanie){
+    public void usuniecieListow(Mieszkanie mieszkanie) {
         File listyONieplacie = this.zapisywanieListow(mieszkanie);
-        if (listyONieplacie != null){
+        if (listyONieplacie != null) {
             this.listyONieplacie.remove(listyONieplacie);
             listyONieplacie.delete();
         }
     }
-
-
 }
