@@ -9,11 +9,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
-import static Projekt_1.Zegar.getCurrentDate;
 
 public class Main {
+
     public static void main(String[] args) {
         new Timer().schedule(new Zegar(), 0, 5000);
+        Osoba.wywolanieWatkow();
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
         osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
@@ -63,29 +64,43 @@ public class Main {
         for (int i = 0; i < B3OS1.iloscMieszkan; i++) {
             mieszkanieList.add(new Mieszkanie(134.98)); // 111 - 189
         }
-        osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));//в помещениях не пишется что они наемцы
+
+
+        osobaList.get(1).mieszkanieList.add(mieszkanieList.get(32));
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(45));
         osobaList.get(4).mieszkanieList.add(mieszkanieList.get(64));
-        osobaList.get(6).mieszkanieList.add(mieszkanieList.get(74));
+        osobaList.get(3).mieszkanieList.add(mieszkanieList.get(74));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(86));
         osobaList.get(6).mieszkanieList.add(mieszkanieList.get(97));
 
         osobaList.get(3).mieszkanieList.add(mieszkanieList.get(74)); // mieszka z najemcej
 
         mieszkanieList.get(32).najemca = osobaList.get(1);
-        mieszkanieList.get(74).najemca = osobaList.get(3);
         mieszkanieList.get(45).najemca = osobaList.get(4);
         mieszkanieList.get(64).najemca = osobaList.get(4);
-        mieszkanieList.get(74).najemca = osobaList.get(6);
+        mieszkanieList.get(74).najemca = osobaList.get(3);
         mieszkanieList.get(86).najemca = osobaList.get(6);
         mieszkanieList.get(97).najemca = osobaList.get(6);
+
+        mieszkanieList.get(32).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(32).dataZakonczenia = Zegar.data.plusDays(30);
+        mieszkanieList.get(74).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(74).dataZakonczenia = Zegar.data.plusDays(30);
+        mieszkanieList.get(45).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(45).dataZakonczenia = Zegar.data.plusDays(30);
+        mieszkanieList.get(64).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(64).dataZakonczenia = Zegar.data.plusDays(30);
+        mieszkanieList.get(86).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(86).dataZakonczenia = Zegar.data.plusDays(30);
+        mieszkanieList.get(97).dataRozpoczeczia = Zegar.data;
+        mieszkanieList.get(97).dataZakonczenia = Zegar.data.plusDays(30);
         //------------------- PARKING --------------------------
         List<Parking> parkingList = new ArrayList<>();
         for (int i = 0; i < B1OS1.iloscParkingMiejsc; i++) { // 0 - 20
-            parkingList.add(new Parking(20));
+            parkingList.add(new Parking(30));
         }
         for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 21 - 35
-            parkingList.add(new Parking(30));
+            parkingList.add(new Parking(20));
         }
         for (int i = 0; i < B2OS1.iloscParkingMiejsc; i++) { // 36 - 45
             parkingList.add(new Parking(40));
@@ -144,17 +159,18 @@ public class Main {
         osiedlaList.add(new Osiedla(blokList.size(), 1500, blokList));
         //-------------------------------------------------------
         meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-        };
+    }
 
     // ------------------ MENU -----------------------------
     public static void meniu(List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             System.out.println("Meniu:");
-            System.out.println("1.Zakończenia programu w dowolnym momencie.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n10.Zobaczyс aktualną datę.\n11.Dodawanie i wyjecie mieszkancow ze strony najemcy, ");
+            System.out.println("1.Zakończyc programm.\n2.Wybrania którą jest osobą.\n3.Wypisania swoich danych łącznie z wynajętymi pomieszczeniami.\n4.Wyświetlenia wolnych pomieszczeń.\n5.Wynajęcia nowego pomieszczenia, po uprzednim jego wybraniu.\n6.Wybrania pomieszczenia które wynajmuje dana osoba oraz wyświetlenia zawartości pomieszczenia.\n7.Włożenia nowych pojazdów/przedmiotów.\n8.Wyjęcia przedmiotów lub pojazdów.\n9.Wykonania polecenia zapisującego aktualny stan osiedla do pliku.\n10.Zobaczyс aktualną datę.\n11.Dodawanie i wyjecie mieszkancow ze strony najemcy, ");
             System.out.println("Wprowadz numer punktu meniu:");
             Scanner sc = new Scanner(System.in);
             int idMeniu = sc.nextInt();
             System.out.println();
+            if (idMeniu <= 11 && idMeniu > 0) {
                 switch (idMeniu) {
                     case 1:
                         System.out.println("Program jest zakonczony.");
@@ -202,6 +218,7 @@ public class Main {
                         break;
                     case 9:
                         case9(osobaList);
+                        wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 10:
                         System.out.println(Zegar.data);
@@ -213,9 +230,10 @@ public class Main {
                         case11(account11, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
-                    default:
-                        throw new InputMismatchException();
                 }
+            } else {
+                throw new InputMismatchException();
+            }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane \n");
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -257,6 +275,7 @@ public class Main {
             meniu(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         } else {
             System.out.println("Program jest zakonczony.");
+            System.exit(0);
         }
     }
 
@@ -293,11 +312,11 @@ public class Main {
                     numerMieszkanie = i;
                 }
             }
-            for(Mieszkanie mieszkanie : account.mieszkanieList){
+            for (Mieszkanie mieszkanie : account.mieszkanieList) {
                 ilosc++;
             }
-            if(ilosc == 5){
-                System.out.println("Exception: Najemec moze wynajmowac tyle 5 mieszkan!");
+            if (ilosc == 5) {
+                System.out.println("Exception: Najemec moze wynajmowac nie wiecej niz 5 pomieszczen!");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
             if (!sprawdzenieMieszkania) {
@@ -311,8 +330,8 @@ public class Main {
                 account.najemca = true;
                 account.mieszkanieList.add(mieszkanieList.get(numerMieszkanie));
                 mieszkanieList.get(numerMieszkanie).listOsobMieszkanie.add(account);
-                mieszkanieList.get(numerMieszkanie).dataRozpoczeczia = getCurrentDate();
-                mieszkanieList.get(numerMieszkanie).dataZakonczenia = getCurrentDate().plusDays(30);
+                mieszkanieList.get(numerMieszkanie).dataRozpoczeczia = getData();
+                mieszkanieList.get(numerMieszkanie).dataZakonczenia = getData().plusDays(30);
                 System.out.println("Pan/Pani wynajmowal(a) mieszkanie na 1 miesiac");
             }
         } catch (AbsenceAppartmentException | AppartmentRentedException e) {
@@ -340,11 +359,12 @@ public class Main {
 
     public static void case7(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
-            if(account.najemca) {
+            if (account.najemca) {
                 System.out.println("1. Wyjscie \n2. Dodac pojazd do parkingowego miejsca \n3. Dodac przedmiot do parkingowego miejsca \n4. Zobaczyc wszyskie swoje pojazdy \n5. Zobaczyc wszyskie swoje przedmioty \n6. Zobaczyc swoje parkingowe miejsca i ich transporty");
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
+                if (idMeniu <= 6 && idMeniu >= 1) {
                     switch (idMeniu) {
                         case 1:
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -369,10 +389,11 @@ public class Main {
                             wywolanieParkingu(account);
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                             break;
-                        default:
-                            throw new InputMismatchException();
                     }
                 } else {
+                    throw new InputMismatchException();
+                }
+            } else {
                 System.out.println("Exception: Osoba nie jest najemca");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
@@ -384,41 +405,41 @@ public class Main {
 
     public static void dodanieTransportu(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Wprowadz numer indefikacyjny transportu!");
-                int numer = sc.nextInt();
-                boolean sprawdzMiejsce = false;
-                boolean spawdzTransport = false;
-                for (int i = 0; i < account.transportOsobaList.size(); i++) {
-                    if (numer == account.transportOsobaList.get(i).numerIndefikacyjnyObjektu) {
-                        System.out.println("Transport jest znaleziony!");
-                        System.out.println("Marka: " + account.transportOsobaList.get(i).nazwa);
-                        System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
-                        System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
-                        spawdzTransport = true;
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wprowadz numer indefikacyjny transportu!");
+            int numer = sc.nextInt();
+            boolean sprawdzMiejsce = false;
+            boolean spawdzTransport = false;
+            for (int i = 0; i < account.transportOsobaList.size(); i++) {
+                if (numer == account.transportOsobaList.get(i).numerIndefikacyjnyObjektu) {
+                    System.out.println("Transport jest znaleziony!");
+                    System.out.println("Marka: " + account.transportOsobaList.get(i).nazwa);
+                    System.out.println("Objetosc transportu: " + account.transportOsobaList.get(i).objetosc);
+                    System.out.println("Numer transportu: " + account.transportOsobaList.get(i).numerRejestracijny);
+                    spawdzTransport = true;
+                    break;
+                }
+            }
+            if (!spawdzTransport) {
+                throw new AbsenceOsobaObjektException();
+            }
+            if (spawdzTransport) {
+                for (int i = 0; i < account.parkingOsobaList.size(); i++) {
+                    System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
+                    if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(i).objetosc) {
+                        account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(i));
+                        account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(i).objetosc;
+                        account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(i).objetosc;
+                        System.out.println("Transport jest dodany do parkingowego miejsca.");
+                        sprawdzMiejsce = true;
                         break;
                     }
                 }
-                if (!spawdzTransport) {
-                    throw new AbsenceOsobaObjektException();
-                }
-                if (spawdzTransport) {
-                    for (int i = 0; i < account.parkingOsobaList.size(); i++) {
-                        System.out.println("Objetosc parkingowego miejsca: " + account.parkingOsobaList.get(i).objetosc);
-                        if (account.parkingOsobaList.get(i).wolneMiejsceParking >= account.transportOsobaList.get(i).objetosc) {
-                            account.parkingOsobaList.get(i).transportList.add(account.transportOsobaList.get(i));
-                            account.parkingOsobaList.get(i).wolneMiejsceParking = account.parkingOsobaList.get(i).wolneMiejsceParking - account.transportOsobaList.get(i).objetosc;
-                            account.parkingOsobaList.get(i).zajenteMiejsce += account.transportOsobaList.get(i).objetosc;
-                            System.out.println("Transport jest dodany do parkingowego miejsca.");
-                            sprawdzMiejsce = true;
-                            break;
-                        }
-                    }
-                }
+            }
 
-                if (!sprawdzMiejsce) {
-                    throw new TooManyThingsException();
-                }
+            if (!sprawdzMiejsce) {
+                throw new TooManyThingsException();
+            }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -492,35 +513,14 @@ public class Main {
         }
     }
 
-    public static void case9(List<Osoba> osobaList) {
-        StringBuilder text = new StringBuilder();
-        boolean raport = false;
-        for (int i = 0; i < osobaList.size(); i++) {
-            text.append("\n").append("\n").append("~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  ").append(osobaList.get(i).imie).append(" ").append(osobaList.get(i).nazwisko).append(" ").append("~~~~~~").append("\n").append("\n").append("\n").append("* DATA URODZENIA: ").append(osobaList.get(i).dataUrodzenia).append("\n").append("\n").append("* ID: ").append(osobaList.get(i).id).append("\n").append("\n").append("* ADRES ZAMIESZKANIA: ").append(osobaList.get(i).adres).append("\n").append("\n").append("* INFORMACJA O POMIESZCZENIACH: ").append("\n").append("\n").append(osobaList.get(i).mieszkanieList).append("\n").append(osobaList.get(i).parkingOsobaList).append("\n").append("\n").append("* INFORMACJA O OBJEKTACH: ").append("\n").append("\n").append(osobaList.get(i).transportOsobaList).append("\n").append(osobaList.get(i).przedmiotOsobaList);
-            try {
-                Files.write(Paths.get("Report.txt"), text.toString().getBytes());
-                raport = true;
-
-            } catch (IOException e) {
-            }
-
-        }
-        if (raport == true) {
-            System.out.println("Raport jest zapisany do pliku Report.txt!");
-        } else {
-            System.out.println("Exception:Pomylka podczas zapisywania pliku!");
-        }
-    }
-
-
-
     public static void case8(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
-            if(account.najemca) {
+            if (account.najemca) {
                 System.out.println("1. Wyjscie \n2. Wyjac pojazd z parkingowego miejsca \n3. Wyjac przedmiot z parkingowego miejsca\n4. Zobaczyc swoje parkingowe miejsca i ich transporty");
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
+                if (idMeniu <= 4 && idMeniu >= 1) {
                     switch (idMeniu) {
                         case 1:
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
@@ -537,8 +537,9 @@ public class Main {
                             wywolanieParkingu(account);
                             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                             break;
-                        default:
-                            throw new InputMismatchException();
+                    }
+                } else {
+                    throw new InputMismatchException();
                 }
             } else {
                 System.out.println("Exception: Osoba nie jest najemca");
@@ -642,88 +643,111 @@ public class Main {
 
     }
 
-    public static void case11(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca){
-        try{
+    public static void case9(List<Osoba> osobaList) {
+        StringBuilder text = new StringBuilder();
+        boolean raport = false;
+        for (int i = 0; i < osobaList.size(); i++) {
+            text.append("\n").append("\n").append("~~~~~~ WSZYSTKA INFORMACJA O OSOBIE:  ").append(osobaList.get(i).imie).append(" ").append(osobaList.get(i).nazwisko).append(" ").append("~~~~~~").append("\n").append("\n").append("\n").append("* DATA URODZENIA: ").append(osobaList.get(i).dataUrodzenia).append("\n").append("\n").append("* ID: ").append(osobaList.get(i).id).append("\n").append("\n").append("* ADRES ZAMIESZKANIA: ").append(osobaList.get(i).adres).append("\n").append("\n").append("* INFORMACJA O POMIESZCZENIACH: ").append("\n").append("\n").append(osobaList.get(i).mieszkanieList).append("\n").append(osobaList.get(i).parkingOsobaList).append("\n").append("\n").append("* INFORMACJA O OBJEKTACH: ").append("\n").append("\n").append(osobaList.get(i).transportOsobaList).append("\n").append(osobaList.get(i).przedmiotOsobaList);
+            try {
+                Files.write(Paths.get("Report.txt"), text.toString().getBytes());
+                raport = true;
+
+            } catch (IOException e) {
+            }
+
+        }
+        if (raport == true) {
+            System.out.println("Raport jest zapisany do pliku Report.txt!");
+        } else {
+            System.out.println("Exception:Pomylka podczas zapisywania pliku!");
+        }
+    }
+
+
+    public static void case11(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
+        try {
             if (account.najemca) {
-                System.out.println("1. Wyjscie \n2. Dodac mieszkanca \n3. Wyjac mieszkanca\n\n4. Zobaczyc liste wynajetych mieszkan");
+                System.out.println("1. Wyjscie \n2. Dodac mieszkanca \n3. Wyjac mieszkanca\n4. Zobaczyc liste wynajetych mieszkan");
                 System.out.println("Wprowadz punkt mieniu: ");
                 Scanner sc = new Scanner(System.in);
                 int idMeniu = sc.nextInt();
-                   switch (idMeniu) {
-                       case 1:
-                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           break;
-                       case 2:
-                           dodawanieMeszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           break;
-                       case 3:
-                           wyjacMieszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           break;
-                       case 4:
-                           wyswietlMieszkanie(account);
-                           wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-                           break;
-                       default:
-                           throw new InputMismatchException();
-                   }
-        } else {
-            System.out.println("Exception: Osoba nie jest najemca");
-            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
-        }
+                if (idMeniu <= 4 && idMeniu >= 1) {
+                    switch (idMeniu) {
+                        case 1:
+                            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            break;
+                        case 2:
+                            dodawanieMeszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            break;
+                        case 3:
+                            wyjacMieszkanca(account, osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            break;
+                        case 4:
+                            wyswietlMieszkanie(account);
+                            wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+                            break;
+                    }
+                } else {
+                    throw new InputMismatchException();
+                }
+            } else {
+                System.out.println("Exception: Osoba nie jest najemca");
+                wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
+            }
         } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
     }
 
-    public static void dodawanieMeszkanca(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca){  // 3564
-        try{
+    public static void dodawanieMeszkanca(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {  // 3564
+        try {
             boolean sprawdzPesel = false;
             boolean sprawdzMieszkanie = false;
             int numerOsoby = 0;
             System.out.println("Wprowadz PESEL osoby: ");
             Scanner sc = new Scanner(System.in);
             int peselOsoby = sc.nextInt();
-            for(Osoba osoba : osobaList){
-                if(osoba.pesel == peselOsoby){
+            for (Osoba osoba : osobaList) {
+                if (osoba.pesel == peselOsoby) {
                     sprawdzPesel = true;
                     numerOsoby = osobaList.indexOf(osoba);
                     break;
-                }
-                else if(account.pesel == peselOsoby){
+                } else if (account.pesel == peselOsoby) {
                     System.out.println("Exception: Najemec juz tu mieszka!");
                     wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                     break;
                 }
             }
-            if(!sprawdzPesel){
+            if (!sprawdzPesel) {
                 System.out.println("Exception: Takiego czlowieka nie ma w bazie dannych!");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
             System.out.println("Wprowadz numer mieszkania do ktorego chcesz dodac mieszkanca: ");
             int numerMieszkania = sc.nextInt();
-            for(Mieszkanie mieszkanie : account.mieszkanieList){
-                if(mieszkanie.numerIndyfikacyjny == numerMieszkania){
+            for (Mieszkanie mieszkanie : account.mieszkanieList) {
+                if (mieszkanie.numerIndyfikacyjny == numerMieszkania) {
                     sprawdzMieszkanie = true;
                     break;
                 }
             }
-            if(!sprawdzMieszkanie){
+            if (!sprawdzMieszkanie) {
                 System.out.println("Exception: Takiego mieszkania najemec nie wynajmuje");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
-            if(sprawdzPesel && sprawdzMieszkanie){
+            if (sprawdzPesel && sprawdzMieszkanie) {
                 System.out.println("Osoba jest dodana do listy mieszkancow");
                 mieszkanieList.get(numerMieszkania).listOsobMieszkanie.add(osobaList.get(numerOsoby));
             }
-        } catch(InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
     }
-    public static void wyjacMieszkanca(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca){
+
+    public static void wyjacMieszkanca(Osoba account, List<Osoba> osobaList, List<Mieszkanie> mieszkanieList, List<Blok> blokList, List<Osiedla> osiedlaList, List<Objekt> przedmiotList, List<Osoba> listNajemca) {
         try {
             Scanner sc = new Scanner(System.in);
             boolean sprawdzPesel = false;
@@ -733,40 +757,41 @@ public class Main {
 
             System.out.println("Wprowadz numer mieszkania z ktorego chcesz wyjac mieszkanca: ");
             int numerMieszkania = sc.nextInt();
-            for(Mieszkanie mieszkanie : account.mieszkanieList){
-                if(mieszkanie.numerIndyfikacyjny == numerMieszkania){
+            for (Mieszkanie mieszkanie : account.mieszkanieList) {
+                if (mieszkanie.numerIndyfikacyjny == numerMieszkania) {
                     sprawdzMieszkanie = true;
                     idMieszkania = mieszkanieList.indexOf(mieszkanie);
                     break;
                 }
             }
-            if(!sprawdzMieszkanie){
+            if (!sprawdzMieszkanie) {
                 System.out.println("Exception: Takiego mieszkania najemec nie wynajmuje");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
             System.out.println("Wprowadz PESEL osoby: ");
             int peselOsoby = sc.nextInt();
-            for(Osoba osoba : mieszkanieList.get(idMieszkania).listOsobMieszkanie){
-                if(osoba.pesel == peselOsoby){
+            for (Osoba osoba : mieszkanieList.get(idMieszkania).listOsobMieszkanie) {
+                if (osoba.pesel == peselOsoby) {
                     sprawdzPesel = true;
                     numerOsoby = osobaList.indexOf(osoba);
                     break;
                 }
             }
-            if(!sprawdzPesel){
+            if (!sprawdzPesel) {
                 System.out.println("Exception: Takiego czlowieka nie ma w bazie dannych!");
                 wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
             }
-            if(sprawdzPesel && sprawdzMieszkanie){
+            if (sprawdzPesel && sprawdzMieszkanie) {
                 System.out.println("Osoba jest wyjacona z listy mieszkancow!");
                 mieszkanieList.get(idMieszkania).listOsobMieszkanie.remove(numerOsoby);
             }
-        } catch(InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("Exception: Bledne dane!");
             wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
         }
     }
-    public static void wyswietlMieszkanie(Osoba account){
+
+    public static void wyswietlMieszkanie(Osoba account) {
         System.out.println(account.mieszkanieList);
     }
 }

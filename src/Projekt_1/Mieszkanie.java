@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Mieszkanie {
     private static int indeks = 0;
-    public int numerIndyfikacyjny;
+    public static int numerIndyfikacyjny;
     List<Osoba> listOsobMieszkanie;
     LocalDate dataRozpoczeczia;
     LocalDate dataZakonczenia;
