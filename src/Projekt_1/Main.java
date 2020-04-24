@@ -9,11 +9,11 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
-import static Projekt_1.PrzesuniecieZegara.getCurrentDate;
+import static Projekt_1.Zegar.getCurrentDate;
 
 public class Main {
     public static void main(String[] args) {
-        new Timer().schedule(new PrzesuniecieZegara(), 0, 5000);
+        new Timer().schedule(new Zegar(), 0, 5000);
         // -------------------   OSOBY  -----------------------
         List<Osoba> osobaList = new ArrayList<>();
         osobaList.add(new Osoba("Jesus", "Dudak", 3874, "ul.Farkor", LocalDate.parse("1999-11-23"), false));
@@ -204,7 +204,7 @@ public class Main {
                         case9(osobaList);
                         break;
                     case 10:
-                        System.out.println(PrzesuniecieZegara.data);
+                        System.out.println(Zegar.data);
                         wyjscie(osobaList, mieszkanieList, blokList, osiedlaList, przedmiotList, listNajemca);
                         break;
                     case 11:
