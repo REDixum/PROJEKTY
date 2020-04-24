@@ -3,6 +3,7 @@ package Projekt_1;
 import Projekt_1.Objekty.Objekt;
 import Projekt_1.Objekty.Transport;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Osoba implements Comparable<Osoba>{
     public List<Parking> parkingOsobaList;
     public List<Transport> transportOsobaList;
     public List<Objekt> przedmiotOsobaList;
+    public List<Mieszkanie> mieszkanieNaOplate;
     public boolean oplataMieszkanie = false;
 
     public Osoba(String imie, String nazwisko, int pesel, String adres, LocalDate dataUrodzenia, boolean najemca) {
@@ -37,6 +39,9 @@ public class Osoba implements Comparable<Osoba>{
         if (najemca == true) {
             this.najemca = true;
         }
+        this.mieszkanieNaOplate = new ArrayList<>();
+        run.start();
+        run1.start();
     }
 
 
@@ -63,7 +68,7 @@ public class Osoba implements Comparable<Osoba>{
           while(true) {
               try {
                   generowanieDecyzij(oplataMieszkanie);
-                  oplata(najemca, oplataMieszkanie, mieszkanieList);
+                  oplata(najemca, oplataMieszkanie, mieszkanieList, mieszkanieNaOplate, parkingOsobaList);
                   Thread.sleep(30000);
               } catch (InterruptedException e){
               }
@@ -71,14 +76,29 @@ public class Osoba implements Comparable<Osoba>{
         }
     });
 
-    public static void oplata(boolean najemca, boolean oplataMieszkanie, List<Mieszkanie> mieszkanieList){
-        if(najemca){
-            if(oplataMieszkanie){
-                for(int i = 0; i < mieszkanieList.size(); i++){
-                    mieszkanieList.get(i).dataZakonczenia.plusDays(30);
+    Thread run1 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            while(true) {
+                try {
+                    sprawdzenieOplaty(mieszkanieList, mieszkanieNaOplate);
+                    Thread.sleep(10000);
+                } catch (InterruptedException e){
                 }
-            } else {
+            }
+        }
+    });
 
+    public static void oplata(boolean najemca, boolean oplataMieszkanie, List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate, List<Parking> parkingOsobaList) {
+        if (najemca){
+            for(int i = 0; i < mieszkanieNaOplate.size(); i++) {
+                if (oplataMieszkanie) {
+                    int id = mieszkanieNaOplate.get(i).numerIndyfikacyjny;
+                    mieszkanieList.get(id).dataZakonczenia.plusDays(30);
+                    mieszkanieNaOplate.remove(i);
+                } else if (!oplataMieszkanie || mieszkanieNaOplate.get(i).dataZakonczenia.isBefore(Zegar.getCurrentDate())) {
+                    eksmisja(parkingOsobaList, mieszkanieList, mieszkanieNaOplate);
+                }
             }
         }
     }
@@ -91,8 +111,75 @@ public class Osoba implements Comparable<Osoba>{
         }
     }
 
-    public static void eksmisja(){
+    public static void eksmisja(List<Parking> parkingOsobaList, List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate){
+        boolean sprawdzSpszedazTransportu = false;
+        int count = 0;
+        if(parkingOsobaList.size() != 0){
+            for(int i = 0; i < parkingOsobaList.size(); i++){
+                if(parkingOsobaList.get(i).transportList.size() != 0){
+                    count++;
+                    for(int j = 0; j < parkingOsobaList.get(i).transportList.size(); j++){
+                        parkingOsobaList.get(i).transportList.remove(j);
+                        sprawdzSpszedazTransportu = true;
+                        dalszyWynajm(mieszkanieNaOplate, mieszkanieList);
+                        break;
+                    }
+                    break;
+                } else if(!sprawdzSpszedazTransportu){
+                    if(parkingOsobaList.get(i).przedmiotList.size() != 0){
+                        count++;
+                        for(int j = 0; j < parkingOsobaList.get(i).przedmiotList.size(); j++){
+                            parkingOsobaList.get(i).przedmiotList.remove(j);
+                            sprawdzSpszedazTransportu = true;
+                            dalszyWynajm(mieszkanieNaOplate, mieszkanieList);
+                            break;
+                        }
+                        break;
+                    }
+                } else {
+                    if(count == parkingOsobaList.size()){
+                        eksmisjaMieszkancow(mieszkanieList, mieszkanieNaOplate);
+                    }
+                }
+            }
+        }
+    }
 
+    public static void dalszyWynajm(List<Mieszkanie> mieszkanieNaOplate, List<Mieszkanie> mieszkanieList){
+        int id = 0;
+        for(int i = 0; i<mieszkanieNaOplate.size(); i++){
+            id = mieszkanieNaOplate.get(i).numerIndyfikacyjny;
+            mieszkanieList.get(id).dataZakonczenia.plusDays(60);
+        }
+    }
+
+    public static void eksmisjaMieszkancow(List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate){
+        int id;
+        for(int i = 0; i < mieszkanieNaOplate.size(); i++){
+            id = mieszkanieNaOplate.get(i).numerIndyfikacyjny;
+            mieszkanieList.get(id).najemca = null;
+            mieszkanieList.remove(id);
+        }
+        for(int i = 0; i < mieszkanieNaOplate.size(); i++){
+            id = mieszkanieNaOplate.get(i).numerIndyfikacyjny;
+            for(int j = 0; j < mieszkanieNaOplate.get(i).listOsobMieszkanie.size(); j++){
+                mieszkanieList.get(id).listOsobMieszkanie.remove(j);
+            }
+        }
+    }
+
+    public static void sprawdzenieOplaty(List<Mieszkanie> mieszkanieList, List<Mieszkanie> mieszkanieNaOplate) {
+        for(int i = 0; i < mieszkanieList.size(); i++){
+            for(int j = 0; j < mieszkanieNaOplate.size(); j++){
+                if(mieszkanieNaOplate.get(j) == mieszkanieList.get(i)){
+                    // Mieszkanie juz znajduje w liscie na oplate!
+                } else{
+                    if(mieszkanieList.get(i).dataZakonczenia.isBefore(Zegar.getCurrentDate())){
+                        mieszkanieNaOplate.add(mieszkanieList.get(i));
+                    }
+                }
+            }
+        }
     }
 
 }
